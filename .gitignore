@@ -1,0 +1,4 @@
+# Contiene el token del bot: nunca subirlo
+config.ini
+resumenes/
+__pycache__/
