@@ -1,4 +1,4 @@
-﻿"""
+"""
 Monitor de Normas Legales - Diario Oficial El Peruano
 =====================================================
 
@@ -44,10 +44,10 @@ except ImportError:
 import requests
 from bs4 import BeautifulSoup
 from docx import Document
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_TAB_ALIGNMENT
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
-from docx.shared import Pt, RGBColor, Cm
+from docx.shared import Pt, RGBColor, Cm, Twips
 
 BASE_DIR = Path(__file__).resolve().parent
 HORA_LIMA = timezone(timedelta(hours=-5))  # Perú no tiene horario de verano
@@ -98,7 +98,14 @@ EXCLUIR_CONTIENE = [patron_termino(t) for t in _criterios.get("excluir_si_sumill
 REGEX_ATU_TEXTO = re.compile(
     r"\bATU\b|Autoridad de Transporte Urbano( para Lima y Callao)?", re.IGNORECASE
 )
-REGEX_MONTO = re.compile(r"S/\s?[\d.,]+(?:\s?(?:millones|mil))?")
+REGEX_MONTO = re.compile(r"S/\s?\d{1,3}(?:[ .,'’]\d{3})*(?:[.,]\d{2})?(?:\s?(?:millones|mil))?")
+# Inicio de la parte resolutiva ("SE RESUELVE:", "DECRETA:", "ACUERDA:", "Ha dado la Ley siguiente:"…)
+REGEX_RESUELVE = re.compile(
+    r"(?:SE\s+)?(?:RESUELVE|DECRETA|ACUERDA|ACUERDAN|DISPONE|RESOLVI[ÓO])\s*:"
+    r"|ACORD[ÓO](?:\s+POR\s+\w+)?\s*:|Ha dado la Ley siguiente\s*:",
+    re.IGNORECASE)
+# Artículo 1 resolutivo: "Artículo 1.-", "Artículo Primero.-", "ARTÍCULO PRIMERO. -" (no las citas de los considerandos)
+REGEX_ART1 = re.compile(r"Art[íi]culo\s+(?:1|Primero|[ÚU]nico)\s*[.º°o]*\s*[-–—:]", re.IGNORECASE)
 
 
 @dataclass
@@ -234,8 +241,16 @@ def extracto_articulos(texto: str, max_chars=700) -> str:
     """Primer artículo de la parte resolutiva (lo que la norma dispone)."""
     if not texto:
         return ""
-    m = re.search(r"(Art[íi]culo\s+1\.?[º°o]?\.?\s*[-–.]?.*)", texto, re.S)
-    frag = m.group(1) if m else ""
+    # Se busca el artículo 1 después de "SE RESUELVE:" para no tomar artículos citados en los considerandos
+    marca = REGEX_RESUELVE.search(texto)
+    inicio = marca.end() if marca else 0
+    m = REGEX_ART1.search(texto, inicio) or (REGEX_ART1.search(texto) if inicio else None)
+    if m:
+        frag = texto[m.start():]
+    elif inicio:
+        frag = texto[inicio:]
+    else:
+        return ""
     frag = re.sub(r"\s+", " ", frag).strip()
     if len(frag) > max_chars:
         frag = frag[:max_chars].rsplit(" ", 1)[0] + "…"
@@ -243,10 +258,15 @@ def extracto_articulos(texto: str, max_chars=700) -> str:
 
 
 def montos(texto: str, n=4):
-    vistos = []
+    """Montos en soles citados en la norma; descarta cifras menores a S/ 1 000 (numerales, anexos)."""
+    vistos, claves = [], set()
     for m in REGEX_MONTO.findall(texto or ""):
         m = m.strip().rstrip(".,")
-        if m not in vistos and re.search(r"\d", m):
+        cifra = re.sub(r"[.,]\d{2}$", "", re.sub(r"[^\d.,]", "", m))
+        valor = int(re.sub(r"\D", "", cifra) or 0)
+        # el mismo monto suele repetirse con otro formato (419,268.00 / 419 268,00)
+        if (valor >= 1000 or "millon" in m) and valor not in claves:
+            claves.add(valor)
             vistos.append(m)
         if len(vistos) >= n:
             break
@@ -254,22 +274,109 @@ def montos(texto: str, n=4):
 
 
 # --------------------------------------------------------------------------
-# Documento Word
+# Documento Word (informe formal, con la paleta del Portal de Gestión)
 # --------------------------------------------------------------------------
-def agregar_hipervinculo(parrafo, url, texto):
-    rel = parrafo.part.relate_to(
-        url, "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
-        is_external=True)
-    hl = OxmlElement("w:hyperlink")
-    hl.set(qn("r:id"), rel)
-    run = OxmlElement("w:r")
-    rpr = OxmlElement("w:rPr")
-    color = OxmlElement("w:color"); color.set(qn("w:val"), "0563C1")
-    subr = OxmlElement("w:u"); subr.set(qn("w:val"), "single")
-    rpr.append(color); rpr.append(subr); run.append(rpr)
-    t = OxmlElement("w:t"); t.text = texto; run.append(t)
-    hl.append(run)
-    parrafo._p.append(hl)
+NAVY, AZUL, GRIS, FONDO, BORDE, ROJO = "0A2F5C", "0B5CAD", "5B6880", "F2F5FA", "C9D2DF", "B42318"
+COLOR_TEMA = {CAT_ATU: "2A78D6", "Normatividad presupuestal": "EB6834", "Inversiones": "1BAF7A"}
+FUENTE = "Arial"
+MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
+         "septiembre", "octubre", "noviembre", "diciembre"]
+DIAS = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
+
+
+def fecha_larga(d: date, con_dia=True) -> str:
+    base = f"{d.day} de {MESES[d.month - 1]} de {d.year}"
+    return f"{DIAS[d.weekday()]} {base}" if con_dia else base
+
+
+def periodo_largo(desde: date, hasta: date) -> str:
+    if desde == hasta:
+        return fecha_larga(desde)
+    if (desde.year, desde.month) == (hasta.year, hasta.month):
+        return f"del {desde.day} al {fecha_larga(hasta, False)}"
+    return f"del {fecha_larga(desde, False)} al {fecha_larga(hasta, False)}"
+
+
+def _rgb(hexa):
+    return RGBColor.from_string(hexa)
+
+
+def _run(par, texto, size=10, bold=False, color=None, italic=False):
+    r = par.add_run(texto)
+    r.font.name = FUENTE
+    r._element.get_or_add_rPr().get_or_add_rFonts().set(qn("w:eastAsia"), FUENTE)
+    r.font.size = Pt(size)
+    r.bold = bold
+    r.italic = italic
+    if color:
+        r.font.color.rgb = _rgb(color)
+    return r
+
+
+def _par(cont, texto="", size=10, bold=False, color=None, align=None, antes=0, despues=4,
+         italic=False, interlineado=1.15):
+    p = cont.add_paragraph()
+    pf = p.paragraph_format
+    pf.space_before, pf.space_after, pf.line_spacing = Pt(antes), Pt(despues), interlineado
+    if align is not None:
+        p.alignment = align
+    if texto:
+        _run(p, texto, size, bold, color, italic)
+    return p
+
+
+def _celda(celda, texto="", size=9, bold=False, color=None, align=None, italic=False):
+    """Escribe en el primer párrafo de la celda (sin el espaciado del estilo Normal)."""
+    p = celda.paragraphs[0]
+    pf = p.paragraph_format
+    pf.space_before, pf.space_after, pf.line_spacing = Pt(1), Pt(1), 1.1
+    if align is not None:
+        p.alignment = align
+    if texto:
+        _run(p, texto, size, bold, color, italic)
+    return p
+
+
+def _borde_parrafo(par, lado="bottom", color=NAVY, grosor=12, espacio=4):
+    ppr = par._p.get_or_add_pPr()
+    bdr = ppr.find(qn("w:pBdr"))
+    if bdr is None:
+        bdr = OxmlElement("w:pBdr")
+        ppr.append(bdr)
+    b = OxmlElement(f"w:{lado}")
+    b.set(qn("w:val"), "single"); b.set(qn("w:sz"), str(grosor))
+    b.set(qn("w:space"), str(espacio)); b.set(qn("w:color"), color)
+    bdr.append(b)
+
+
+def _bordes_tabla(tabla, color=BORDE, grosor=4, internos=True):
+    tblpr = tabla._tbl.tblPr
+    bordes = OxmlElement("w:tblBorders")
+    lados = ["top", "left", "bottom", "right"] + (["insideH", "insideV"] if internos else [])
+    for lado in lados:
+        b = OxmlElement(f"w:{lado}")
+        b.set(qn("w:val"), "single"); b.set(qn("w:sz"), str(grosor))
+        b.set(qn("w:space"), "0"); b.set(qn("w:color"), color)
+        bordes.append(b)
+    tblpr.append(bordes)
+    mar = OxmlElement("w:tblCellMar")
+    for lado, v in (("top", 50), ("bottom", 50), ("left", 100), ("right", 100)):
+        e = OxmlElement(f"w:{lado}")
+        e.set(qn("w:w"), str(v)); e.set(qn("w:type"), "dxa")
+        mar.append(e)
+    tblpr.append(mar)
+
+
+def _borde_celda(celda, lado, color, grosor):
+    tcpr = celda._tc.get_or_add_tcPr()
+    bordes = tcpr.find(qn("w:tcBorders"))
+    if bordes is None:
+        bordes = OxmlElement("w:tcBorders")
+        tcpr.append(bordes)
+    b = OxmlElement(f"w:{lado}")
+    b.set(qn("w:val"), "single"); b.set(qn("w:sz"), str(grosor))
+    b.set(qn("w:space"), "0"); b.set(qn("w:color"), color)
+    bordes.append(b)
 
 
 def sombrear(celda, color_hex):
@@ -279,120 +386,264 @@ def sombrear(celda, color_hex):
     tcpr.append(shd)
 
 
+def _anchos(tabla, anchos_cm):
+    tabla.autofit = False
+    for fila in tabla.rows:
+        for celda, ancho in zip(fila.cells, anchos_cm):
+            celda.width = Cm(ancho)
+
+
+def _fila_fija(fila, encabezado=False):
+    trpr = fila._tr.get_or_add_trPr()
+    trpr.append(OxmlElement("w:cantSplit"))
+    if encabezado:
+        trpr.append(OxmlElement("w:tblHeader"))
+
+
+def _campo(par, instruccion, size=8, color=GRIS):
+    """Campo de Word (PAGE / NUMPAGES) para la numeración de páginas."""
+    r = _run(par, "", size, color=color)
+    for tipo, texto in (("begin", None), (None, instruccion), ("separate", None), (None, "1"), ("end", None)):
+        if tipo:
+            fc = OxmlElement("w:fldChar"); fc.set(qn("w:fldCharType"), tipo); r._r.append(fc)
+        elif texto == instruccion:
+            it = OxmlElement("w:instrText"); it.set(qn("xml:space"), "preserve"); it.text = f" {texto} "; r._r.append(it)
+        else:
+            t = OxmlElement("w:t"); t.text = texto; r._r.append(t)
+
+
+def agregar_hipervinculo(parrafo, url, texto, size=9, bold=False, color=AZUL):
+    rel = parrafo.part.relate_to(
+        url, "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
+        is_external=True)
+    hl = OxmlElement("w:hyperlink")
+    hl.set(qn("r:id"), rel)
+    run = OxmlElement("w:r")
+    rpr = OxmlElement("w:rPr")
+    fuentes = OxmlElement("w:rFonts")
+    for k in ("w:ascii", "w:hAnsi", "w:eastAsia", "w:cs"):
+        fuentes.set(qn(k), FUENTE)
+    rpr.append(fuentes)
+    if bold:
+        rpr.append(OxmlElement("w:b"))
+    c = OxmlElement("w:color"); c.set(qn("w:val"), color); rpr.append(c)
+    sz = OxmlElement("w:sz"); sz.set(qn("w:val"), str(int(size * 2))); rpr.append(sz)
+    u = OxmlElement("w:u"); u.set(qn("w:val"), "single"); rpr.append(u)
+    run.append(rpr)
+    t = OxmlElement("w:t"); t.text = texto; t.set(qn("xml:space"), "preserve"); run.append(t)
+    hl.append(run)
+    parrafo._p.append(hl)
+
+
+def _solo_tab_derecha(par, ancho_cm):
+    """Quita las tabulaciones del estilo Encabezado/Pie (centro 8,25 cm y derecha 16,5 cm) y deja una a la derecha."""
+    ts = par.paragraph_format.tab_stops
+    for pos in (Twips(4680), Twips(9360)):
+        ts.add_tab_stop(pos, WD_TAB_ALIGNMENT.CLEAR)
+    ts.add_tab_stop(Cm(ancho_cm), WD_TAB_ALIGNMENT.RIGHT)
+
+
+def _titulo_seccion(doc, texto):
+    p = _par(doc, texto.upper(), 11, True, NAVY, antes=14, despues=6)
+    _borde_parrafo(p, "bottom", BORDE, 6, 2)
+    p.paragraph_format.keep_with_next = True
+    return p
+
+
+def nombre_propio(texto: str) -> str:
+    """'AUTORIDAD DE TRANSPORTE URBANO PARA LIMA Y CALLAO' -> 'Autoridad de Transporte Urbano para Lima y Callao'."""
+    menores = {"de", "del", "la", "las", "los", "el", "y", "e", "para", "en", "a", "con", "por"}
+    palabras = texto.lower().split()
+    return " ".join(w if i and w in menores else w[:1].upper() + w[1:] for i, w in enumerate(palabras))
+
+
+def _plural(n, sing, plur):
+    return f"{n} {sing if n == 1 else plur}"
+
+
 def generar_word(seleccion, total, desde, hasta, ruta: Path):
     doc = Document()
     sec = doc.sections[0]
-    sec.left_margin = sec.right_margin = Cm(2)
-    estilo = doc.styles["Normal"]
-    estilo.font.name = "Calibri"
-    estilo.font.size = Pt(10.5)
+    sec.page_width, sec.page_height = Cm(21), Cm(29.7)
+    sec.left_margin = sec.right_margin = Cm(2.2)
+    sec.top_margin, sec.bottom_margin = Cm(2.4), Cm(2)
+    sec.header_distance = sec.footer_distance = Cm(1)
+    ancho = 21 - 4.4
+    normal = doc.styles["Normal"]
+    normal.font.name, normal.font.size = FUENTE, Pt(10)
+    normal.element.get_or_add_rPr().get_or_add_rFonts().set(qn("w:eastAsia"), FUENTE)
 
-    t = doc.add_heading("Resumen de Normas Legales – Diario Oficial El Peruano", 0)
-    t.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    periodo = (desde.strftime("%d/%m/%Y") if desde == hasta
-               else f"{desde:%d/%m/%Y} al {hasta:%d/%m/%Y}")
-    p = doc.add_paragraph()
-    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p.add_run(f"Periodo revisado: {periodo}\n").bold = True
-    p.add_run(f"Generado: {datetime.now():%d/%m/%Y %H:%M}  ·  Fuente: diariooficial.elperuano.pe")
+    # Encabezado y pie de página
+    cab = sec.header.paragraphs[0]
+    _solo_tab_derecha(cab, ancho)
+    _run(cab, "AUTORIDAD DE TRANSPORTE URBANO PARA LIMA Y CALLAO", 7.5, True, NAVY)
+    _run(cab, "\tMonitor de Normas Legales", 7.5, color=GRIS)
+    _borde_parrafo(cab, "bottom", NAVY, 8, 4)
+    pie = sec.footer.paragraphs[0]
+    _solo_tab_derecha(pie, ancho)
+    _borde_parrafo(pie, "top", BORDE, 6, 4)
+    _run(pie, "Fuente: Diario Oficial El Peruano · Elaboración automática", 7.5, color=GRIS)
+    _run(pie, "\tPágina ", 7.5, color=GRIS)
+    _campo(pie, "PAGE", 7.5)
+    _run(pie, " de ", 7.5, color=GRIS)
+    _campo(pie, "NUMPAGES", 7.5)
 
-    doc.add_heading("1. Resumen ejecutivo", 1)
-    doc.add_paragraph(
-        f"Se revisaron {total} normas publicadas en el periodo. "
-        f"{len(seleccion)} resultan de interés para la ATU por tratar sobre la entidad, "
-        f"la normatividad presupuestal o las inversiones."
-    )
-    tabla = doc.add_table(rows=1, cols=2)
-    tabla.style = "Light Grid Accent 1"
-    tabla.rows[0].cells[0].text = "Tema"
-    tabla.rows[0].cells[1].text = "N.° de normas"
-    for cat in CATEGORIAS:
-        fila = tabla.add_row().cells
-        fila[0].text = cat
-        fila[1].text = str(sum(cat in n.categorias for n in seleccion))
+    # Título
+    _par(doc, "RESUMEN DE NORMAS LEGALES", 18, True, NAVY, WD_ALIGN_PARAGRAPH.CENTER, 0, 2)
+    _par(doc, f"Diario Oficial El Peruano · {periodo_largo(desde, hasta).capitalize()}",
+         10.5, color=GRIS, align=WD_ALIGN_PARAGRAPH.CENTER, despues=2)
+    regla = _par(doc, "", 4, despues=10)
+    _borde_parrafo(regla, "bottom", NAVY, 18, 1)
 
-    atu = [n for n in seleccion if n.menciones_atu or "ATU y transporte urbano" in n.categorias]
+    # Ficha técnica
+    por_tema = {c: [n for n in seleccion if n.categorias and n.categorias[0] == c] for c in CATEGORIAS}
+    ficha = doc.add_table(rows=2, cols=4)
+    _bordes_tabla(ficha)
+    datos = [("Periodo revisado", desde.strftime("%d/%m/%Y") if desde == hasta
+              else f"{desde:%d/%m/%Y} al {hasta:%d/%m/%Y}"),
+             ("Fecha de elaboración", datetime.now(HORA_LIMA).strftime("%d/%m/%Y %H:%M")),
+             ("Normas publicadas", str(total)),
+             ("Normas de interés", str(len(seleccion)))]
+    for i, (lbl, val) in enumerate(datos):
+        fila, col = ficha.rows[i // 2], (i % 2) * 2
+        sombrear(fila.cells[col], FONDO)
+        _celda(fila.cells[col], lbl, 8.5, True, NAVY)
+        _celda(fila.cells[col + 1], val, 9.5, i == 3, NAVY if i == 3 else None)
+    _anchos(ficha, [3.6, 4.7, 3.6, 4.7])
+
+    # 1. Resumen ejecutivo
+    _titulo_seccion(doc, "1. Resumen ejecutivo")
+    if seleccion:
+        etiqueta = {CAT_ATU: "sobre la ATU y el transporte urbano"}
+        partes = [f"{len(por_tema[c])} {etiqueta.get(c, 'de ' + c[0].lower() + c[1:])}"
+                  for c in CATEGORIAS if por_tema[c]]
+        lista = partes[0] if len(partes) == 1 else f"{', '.join(partes[:-1])} y {partes[-1]}"
+        texto = (f"De las {total} normas publicadas en el periodo, "
+                 f"{_plural(len(seleccion), 'resulta', 'resultan')} de interés institucional: {lista}. "
+                 + ("" if por_tema[CAT_ATU] else "No se identificaron normas que involucren a la ATU. ")
+                 + "El Cuadro 1 presenta la relación completa y la sección 2, el detalle de cada norma.")
+    else:
+        texto = (f"De las {total} normas publicadas en el periodo, ninguna corresponde a la ATU, "
+                 "a la normatividad presupuestal ni a inversiones.")
+    _par(doc, texto, 10, despues=8, align=WD_ALIGN_PARAGRAPH.JUSTIFY)
+
+    atu = [n for n in seleccion if CAT_ATU in n.categorias]
     if atu:
-        doc.add_paragraph()
-        p = doc.add_paragraph()
-        r = p.add_run("Atención – normas que mencionan a la ATU o al transporte urbano de Lima y Callao:")
-        r.bold = True
-        r.font.color.rgb = RGBColor(0xC0, 0x00, 0x00)
+        caja = doc.add_table(rows=1, cols=1)
+        _bordes_tabla(caja, "F4C7C3", 4, internos=False)
+        c = caja.rows[0].cells[0]
+        sombrear(c, "FDF3F2")
+        _borde_celda(c, "left", ROJO, 24)
+        p = _celda(c, f"ATENCIÓN: {_plural(len(atu), 'norma involucra', 'normas involucran')} "
+                      "directamente a la ATU", 9, True, ROJO)
         for n in atu:
-            doc.add_paragraph(f"{n.titulo} ({n.entidad}): {n.sumilla}", style="List Bullet")
+            p = _par(c, "", despues=1, interlineado=1.1)
+            _run(p, "▪ ", 9, color=ROJO)
+            _run(p, f"{n.titulo}", 9, True)
+            _run(p, f" ({nombre_propio(n.entidad)}): {n.sumilla}", 9)
+        _anchos(caja, [ancho])
+        _par(doc, "", 4, despues=4)
 
-    if not seleccion:
-        doc.add_paragraph("No se encontraron normas relacionadas en el periodo.")
-        doc.save(ruta)
-        return
+    if seleccion:
+        cap = _par(doc, "Cuadro 1. Normas de interés identificadas", 9, True, NAVY, antes=4, despues=3)
+        cap.paragraph_format.keep_with_next = True
+        cuadro = doc.add_table(rows=1, cols=4)
+        _bordes_tabla(cuadro)
+        enc = cuadro.rows[0]
+        _fila_fija(enc, encabezado=True)
+        for celda, txt in zip(enc.cells, ["N.°", "Norma y entidad emisora", "Sumilla", "Publicación"]):
+            sombrear(celda, NAVY)
+            _celda(celda, txt, 8.5, True, "FFFFFF", WD_ALIGN_PARAGRAPH.CENTER)
+        num = 0
+        for cat, normas_cat in por_tema.items():
+            if not normas_cat:
+                continue
+            grupo = cuadro.add_row()
+            _fila_fija(grupo)
+            g = grupo.cells[0].merge(grupo.cells[3])
+            sombrear(g, FONDO)
+            _borde_celda(g, "left", COLOR_TEMA.get(cat, AZUL), 30)
+            _celda(g, f"{cat.upper()}  ({len(normas_cat)})", 8.5, True, NAVY)
+            for n in normas_cat:
+                num += 1
+                fila = cuadro.add_row()
+                _fila_fija(fila)
+                c0, c1, c2, c3 = fila.cells
+                _celda(c0, str(num), 9, True, NAVY, WD_ALIGN_PARAGRAPH.CENTER)
+                agregar_hipervinculo(_celda(c1), url_texto(n), n.titulo, 8.5, True, AZUL)
+                _par(c1, n.entidad, 7.5, color=GRIS, despues=1, interlineado=1.05)
+                _celda(c2, n.sumilla, 8.5)
+                _celda(c3, n.fecha, 8.5, align=WD_ALIGN_PARAGRAPH.CENTER)
+                if n.extraordinaria:
+                    _par(c3, "Edición extraordinaria", 7, color=ROJO, align=WD_ALIGN_PARAGRAPH.CENTER,
+                         despues=0, interlineado=1.0)
+        _anchos(cuadro, [1.0, 5.0, 8.4, 2.2])
 
-    num = 2
-    for cat in CATEGORIAS:
-        normas_cat = [n for n in seleccion if n.categorias and n.categorias[0] == cat]
-        if not normas_cat:
-            continue
-        doc.add_heading(f"{num}. {cat} ({len(normas_cat)})", 1)
-        num += 1
+        # 2. Detalle
+        _titulo_seccion(doc, "2. Detalle de las normas")
+        num, sub = 0, 0
+        for cat, normas_cat in por_tema.items():
+            if not normas_cat:
+                continue
+            sub += 1
+            p = _par(doc, f"2.{sub}  {cat}", 10.5, True, AZUL, antes=8, despues=4)
+            p.paragraph_format.keep_with_next = True
+            for n in normas_cat:
+                num += 1
+                ficha = doc.add_table(rows=1, cols=2)
+                _bordes_tabla(ficha)
+                cab_f = ficha.rows[0]
+                _fila_fija(cab_f)
+                t = cab_f.cells[0].merge(cab_f.cells[1])
+                sombrear(t, "E8F0FA")
+                _borde_celda(t, "left", COLOR_TEMA.get(cat, AZUL), 30)
+                _celda(t, f"{num}.  {n.titulo}", 9.5, True, NAVY)
 
-        tabla = doc.add_table(rows=1, cols=4)
-        tabla.style = "Table Grid"
-        for i, enc in enumerate(["Fecha", "Entidad", "Norma", "Sumilla"]):
-            c = tabla.rows[0].cells[i]
-            c.text = enc
-            c.paragraphs[0].runs[0].bold = True
-            sombrear(c, "1F4E79")
-            c.paragraphs[0].runs[0].font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
-        for n in normas_cat:
-            fila = tabla.add_row().cells
-            fila[0].text = n.fecha + (" (Ext.)" if n.extraordinaria else "")
-            fila[1].text = n.entidad
-            fila[2].text = ""
-            agregar_hipervinculo(fila[2].paragraphs[0], url_texto(n), n.titulo)
-            fila[3].text = n.sumilla
-        for fila in tabla.rows:
-            for i, ancho in enumerate([Cm(2.2), Cm(3.5), Cm(4), Cm(7.3)]):
-                fila.cells[i].width = ancho
-                for par in fila.cells[i].paragraphs:
-                    for run in par.runs:
-                        run.font.size = Pt(9)
+                def fila_dato(etiqueta, valor=None, color_lbl=NAVY):
+                    f = ficha.add_row()
+                    _fila_fija(f)
+                    sombrear(f.cells[0], FONDO)
+                    _celda(f.cells[0], etiqueta, 8.5, True, color_lbl)
+                    if valor is not None:
+                        _celda(f.cells[1], valor, 9)
+                    return f.cells[1]
 
-        doc.add_paragraph()
-        for n in normas_cat:
-            doc.add_heading(n.titulo, 3)
-            p = doc.add_paragraph()
-            p.add_run("Entidad: ").bold = True
-            p.add_run(f"{n.entidad}   ")
-            p.add_run("Fecha: ").bold = True
-            p.add_run(n.fecha + ("  (Edición Extraordinaria)" if n.extraordinaria else ""))
-            p = doc.add_paragraph()
-            p.add_run("Temas: ").bold = True
-            p.add_run(", ".join(n.categorias))
-            p = doc.add_paragraph()
-            p.add_run("Sumilla: ").bold = True
-            p.add_run(n.sumilla)
-            disp = extracto_articulos(n.texto)
-            if disp:
-                p = doc.add_paragraph()
-                p.add_run("Dispone: ").bold = True
-                p.add_run(disp)
-            mts = montos(n.texto)
-            if mts:
-                p = doc.add_paragraph()
-                p.add_run("Montos citados: ").bold = True
-                p.add_run(", ".join(mts))
-            for frag in n.menciones_atu:
-                p = doc.add_paragraph()
-                r = p.add_run("Mención a la ATU: ")
-                r.bold = True
-                r.font.color.rgb = RGBColor(0xC0, 0x00, 0x00)
-                p.add_run(frag).italic = True
-            p = doc.add_paragraph()
-            agregar_hipervinculo(p, url_texto(n), "Ver texto completo")
-            p.add_run("   ")
-            agregar_hipervinculo(p, n.url, "Ver en El Peruano")
-            if n.url_pdf:
-                p.add_run("   ")
-                agregar_hipervinculo(p, n.url_pdf, "PDF")
+                fila_dato("Entidad emisora", n.entidad)
+                fila_dato("Publicación", f"{n.fecha} · "
+                          + ("Edición extraordinaria" if n.extraordinaria else "Edición ordinaria"))
+                fila_dato("Temas", " · ".join(n.categorias))
+                fila_dato("Sumilla", n.sumilla)
+                disp = extracto_articulos(n.texto)
+                if disp:
+                    fila_dato("Disposición principal", disp)
+                mts = montos(n.texto)
+                if mts:
+                    fila_dato("Montos citados", " · ".join(mts))
+                if n.menciones_atu:
+                    c = fila_dato("Mención a la ATU", color_lbl=ROJO)
+                    for i, frag in enumerate(n.menciones_atu):
+                        p = _celda(c) if i == 0 else _par(c, "", despues=1, interlineado=1.1)
+                        _run(p, frag, 8.5, italic=True, color=GRIS)
+                c = fila_dato("Enlaces")
+                p = _celda(c)
+                agregar_hipervinculo(p, url_texto(n), "Texto completo", 8.5)
+                _run(p, "   ·   ", 8.5, color=GRIS)
+                agregar_hipervinculo(p, n.url, "El Peruano", 8.5)
+                if n.url_pdf:
+                    _run(p, "   ·   ", 8.5, color=GRIS)
+                    agregar_hipervinculo(p, n.url_pdf, "PDF", 8.5)
+                _anchos(ficha, [3.6, ancho - 3.6])
+                _par(doc, "", 4, despues=6)
+
+    nota = _par(doc, "", antes=10, despues=0, align=WD_ALIGN_PARAGRAPH.JUSTIFY)
+    _borde_parrafo(nota, "top", BORDE, 4, 4)
+    _run(nota, "Nota metodológica: ", 7.5, True, GRIS)
+    _run(nota, "se revisan todas las normas publicadas en el Diario Oficial El Peruano en el periodo. "
+               "Una norma se selecciona cuando su entidad, título o sumilla contiene alguno de los términos "
+               "definidos para cada tema, o cuando su texto completo menciona a la ATU. Los criterios pueden "
+               "consultarse y editarse en el panel: ", 7.5, color=GRIS)
+    agregar_hipervinculo(nota, "https://reneearmasr.github.io/monitor-normas-elperuano/",
+                         "reneearmasr.github.io/monitor-normas-elperuano", 7.5, color=AZUL)
 
     doc.save(ruta)
 
