@@ -504,7 +504,8 @@ def main():
             return 1
         api = f"https://api.telegram.org/bot{token}"
         yo = requests.get(f"{api}/getMe", timeout=30).json()
-        print(f"Bot: @{yo.get('result', {}).get('username')}  {yo.get('description', '')}")
+        info = yo.get("result", {})
+        print(f"Bot: @{info.get('username')} ({info.get('first_name')})  {yo.get('description', '')}")
         r = requests.get(f"{api}/getUpdates", timeout=30).json()
         if not r.get("ok"):
             print(f"Telegram respondió: {r.get('description')}")
