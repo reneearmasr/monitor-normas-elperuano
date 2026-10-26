@@ -90,6 +90,9 @@ PATRONES = {cat: [patron_termino(t) for t in terms if t.strip()]
 # Actos administrativos de personal que no interesan, salvo que mencionen a la ATU
 EXCLUIR = [normalizar(t).strip() for t in _criterios.get("excluir_si_sumilla_empieza_con", [])
            if t.strip()]
+# Temas ajenos que se cuelan por nombres de empresas (p. ej. "Inversiones X S.A.C.")
+EXCLUIR_CONTIENE = [patron_termino(t) for t in _criterios.get("excluir_si_sumilla_contiene", [])
+                    if t.strip()]
 
 # Menciones a la ATU dentro del texto completo (sobre texto original)
 REGEX_ATU_TEXTO = re.compile(
@@ -217,7 +220,9 @@ def clasificar(norma: Norma):
                 break
     menciona_atu = bool(emitida_por_atu or norma.menciones_atu
                         or REGEX_ATU_TEXTO.search(norma.sumilla))
-    if normalizar(norma.sumilla).strip().startswith(tuple(EXCLUIR)) and not menciona_atu:
+    sumilla = normalizar(norma.sumilla).strip()
+    if not menciona_atu and (sumilla.startswith(tuple(EXCLUIR))
+                             or any(p.search(sumilla) for p in EXCLUIR_CONTIENE)):
         cats = []
     if menciona_atu and CAT_ATU not in cats:
         cats.insert(0, CAT_ATU)

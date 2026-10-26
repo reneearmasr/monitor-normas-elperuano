@@ -208,6 +208,7 @@ footer { color: var(--muted); font-size: 12px; padding: 0 0 24px; }
         <button data-dias="90" aria-pressed="true">90 días</button>
         <button data-dias="0">Todo</button>
       </div>
+      <span class="help" id="rangoInd"></span>
     </div>
     <div class="kpis" id="kpisInd"></div>
     <div class="grid2">
@@ -304,6 +305,13 @@ function desdeDias(dias) {
   const d = new Date(hoyISO() + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() - (dias - 1));
   return d.toISOString().slice(0, 10);
 }
+// Rango efectivo: desde la fecha elegida (o el inicio del historial) hasta el último día revisado
+function textoRango(desde) {
+  const dias = Object.keys(DATA.revisadas_por_dia || {}).sort();
+  if (!dias.length) return "";
+  const ini = desde && desde > dias[0] ? desde : dias[0], fin = dias[dias.length - 1];
+  return ini === fin ? `publicadas el ${fmtFecha(fin)}` : `publicadas del ${fmtFecha(ini)} al ${fmtFecha(fin)}`;
+}
 function segmento(id, alCambiar) {
   const cont = $(id);
   cont.querySelectorAll("button").forEach(b => b.onclick = () => {
@@ -366,7 +374,7 @@ function tarjeta(n) {
 function pintarNormas() {
   const lista = filtradas();
   pintarKpisNormas(lista);
-  $("#conteo").textContent = `${lista.length} norma${lista.length === 1 ? "" : "s"}`;
+  $("#conteo").textContent = `${lista.length} norma${lista.length === 1 ? "" : "s"} · ${textoRango(desdeDias(diasNormas()))}`;
   $("#lista").innerHTML = lista.length
     ? lista.slice(0, pagina).map(tarjeta).join("")
     : `<div class="empty">No hay normas con estos filtros.</div>`;
@@ -409,6 +417,7 @@ function pintarIndicadores() {
   const lista = DATA.normas.filter(n => !desde || n.fecha >= desde);
   const revisadas = Object.entries(DATA.revisadas_por_dia).filter(([f]) => !desde || f >= desde).reduce((a, [, c]) => a + c, 0);
   const atuTexto = lista.filter(n => n.menciones_atu?.length).length;
+  $("#rangoInd").textContent = textoRango(desde);
   const entidades = new Set(lista.map(n => n.entidad)).size;
   $("#kpisInd").innerHTML =
     kpi("Normas revisadas", revisadas.toLocaleString("es-PE"), "publicadas en El Peruano") +
@@ -525,9 +534,12 @@ function pintarClaves() {
     Object.entries(CLAVES.categorias).map(([c, l]) => bloque(c, colorDe(c), l, orig.categorias[c] || [], "cat:" + c, true)).join("") +
     `<hr style="border:0;border-top:1px solid var(--border);margin:6px 0 14px">` +
     bloque("Se descartan si la sumilla empieza con… (salvo que mencionen a la ATU)", "", CLAVES.excluir_si_sumilla_empieza_con || [],
-      orig.excluir_si_sumilla_empieza_con || [], "excluir", false);
+      orig.excluir_si_sumilla_empieza_con || [], "excluir", false) +
+    bloque("Se descartan si la sumilla contiene… (salvo que mencionen a la ATU)", "", CLAVES.excluir_si_sumilla_contiene || [],
+      orig.excluir_si_sumilla_contiene || [], "contiene", true);
 
-  const listaDe = k => k === "excluir" ? (CLAVES.excluir_si_sumilla_empieza_con ||= []) : CLAVES.categorias[k.slice(4)];
+  const listaDe = k => k === "excluir" ? (CLAVES.excluir_si_sumilla_empieza_con ||= [])
+    : k === "contiene" ? (CLAVES.excluir_si_sumilla_contiene ||= []) : CLAVES.categorias[k.slice(4)];
   $("#kwEditor").querySelectorAll(".kw button").forEach(b => b.onclick = () => {
     listaDe(b.dataset.k).splice(+b.dataset.i, 1); cambio();
   });

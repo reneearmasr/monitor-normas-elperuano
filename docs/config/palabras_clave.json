@@ -61,9 +61,18 @@
       "brecha de infraestructura",
       "contrataciones publicas",
       "contrataciones del estado",
-      "inversiones"
+      "inversiones no programadas",
+      "programacion multianual de inversiones"
     ]
   },
+  "excluir_si_sumilla_contiene": [
+    "servicios publicos de telecomunicaciones",
+    "concesion unica",
+    "concesion electrica",
+    "concesion definitiva de generacion",
+    "concesion definitiva de transmision",
+    "concesion definitiva de distribucion"
+  ],
   "excluir_si_sumilla_empieza_con": [
     "designan",
     "dan por concluida",
