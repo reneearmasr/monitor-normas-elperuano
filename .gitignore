@@ -1,4 +1,5 @@
 # Contiene el token del bot: nunca subirlo
 config.ini
-resumenes/
+/resumenes/
 __pycache__/
+.claude/

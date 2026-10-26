@@ -21,7 +21,9 @@ Uso:
 
 import argparse
 import configparser
+import json
 import os
+import shutil
 import re
 import sys
 import time
@@ -57,62 +59,37 @@ HEADERS = {
     "Accept-Language": "es-PE,es;q=0.9",
 }
 
-# --------------------------------------------------------------------------
-# Criterios de búsqueda (sobre texto normalizado: minúsculas y sin tildes)
-# --------------------------------------------------------------------------
-CATEGORIAS = {
-    "ATU y transporte urbano": [
-        r"autoridad de transporte urbano",
-        r"transporte urbano (de|para) lima",
-        r"lima y callao.{0,40}transporte|transporte.{0,40}lima y callao",
-        r"linea \d+ (de la red basica )?del metro",
-        r"red basica del metro",
-        r"\bel metropolitano\b|sistema (de transporte )?metropolitano de transporte|\bcosac\b",
-        r"corredores? complementarios?",
-        r"sistema integrado de transporte",
-    ],
-    "Normatividad presupuestal": [
-        r"presupuest",
-        r"transferencias? de partidas",
-        r"transferencias? financieras?",
-        r"creditos? suplementarios?",
-        r"modificaci(on|ones) presupuestari",
-        r"demandas? adicionales",
-        r"reserva de contingencia",
-        r"recursos ordinarios",
-        r"equilibrio financiero",
-        r"endeudamiento",
-        r"operaci(on|ones) de endeudamiento",
-        r"programacion multianual presupuestaria",
-        r"gasto publico",
-        r"hacienda publica",
-        r"tesoro publico",
-    ],
-    "Inversiones": [
-        r"inversi(on|ones) public",
-        r"invierte\.?pe",
-        r"programacion multianual y gestion de inversiones",
-        r"proyectos? de inversion",
-        r"\bioarr\b",
-        r"programa multianual de inversiones",
-        r"cartera de inversiones",
-        r"asociaci(on|ones) publico.?privadas?",
-        r"proinversion",
-        r"obras? por impuestos",
-        r"contratos? de concesion|concesiones? (vial|ferroviari|de transporte|de infraestructura)",
-        r"expedientes? tecnicos?",
-        r"autoridad nacional de infraestructura",
-        r"(obras?|proyectos?|brecha) de infraestructura",
-        r"contrataciones (publicas|del estado)",
-        r"inversiones",
-    ],
-}
+DIR_WEB = BASE_DIR / "docs"  # panel publicado en GitHub Pages
+CAT_ATU = "ATU y transporte urbano"
 
+
+def normalizar(texto: str) -> str:
+    """Minúsculas, sin tildes y con guiones como espacios."""
+    texto = unicodedata.normalize("NFD", texto or "")
+    texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
+    return re.sub(r"[\s\-–—]+", " ", texto.lower())
+
+
+def patron_termino(termino: str) -> re.Pattern:
+    """Convierte un término del panel en regex: 'presupuest*' = cualquier terminación."""
+    t = normalizar(termino).strip()
+    comodin = t.endswith("*")
+    t = t.rstrip("*").strip()
+    cuerpo = r"\s+".join(re.escape(p) for p in t.split())
+    return re.compile(r"\b" + cuerpo + (r"\w*" if comodin else r"\b"))
+
+
+# --------------------------------------------------------------------------
+# Criterios de búsqueda: docs/config/palabras_clave.json (editable desde el panel)
+# --------------------------------------------------------------------------
+_criterios = json.loads((DIR_WEB / "config" / "palabras_clave.json").read_text(encoding="utf-8"))
+CATEGORIAS = {cat: terms for cat, terms in _criterios["categorias"].items()}
+CATEGORIAS.setdefault(CAT_ATU, [])
+PATRONES = {cat: [patron_termino(t) for t in terms if t.strip()]
+            for cat, terms in CATEGORIAS.items()}
 # Actos administrativos de personal que no interesan, salvo que mencionen a la ATU
-REGEX_EXCLUIR = re.compile(
-    r"^(designan|dan por concluid|aceptan (la )?renuncia|encargan|autorizan (el )?viaje|"
-    r"otorgan concesion unica|otorgan concesion electrica)"
-)
+EXCLUIR = [normalizar(t).strip() for t in _criterios.get("excluir_si_sumilla_empieza_con", [])
+           if t.strip()]
 
 # Menciones a la ATU dentro del texto completo (sobre texto original)
 REGEX_ATU_TEXTO = re.compile(
@@ -135,12 +112,6 @@ class Norma:
     menciones_atu: list = field(default_factory=list)
 
 
-def normalizar(texto: str) -> str:
-    texto = unicodedata.normalize("NFD", texto or "")
-    texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
-    return re.sub(r"\s+", " ", texto.lower())
-
-
 # --------------------------------------------------------------------------
 # Descarga y lectura del portal
 # --------------------------------------------------------------------------
@@ -160,9 +131,17 @@ def listar_normas(s: requests.Session, desde: date, hasta: date, solo_extra=Fals
     }
     if solo_extra:
         data["tipo"] = "on"
-    r = s.post(URL_FILTRO, params=params, data=data, timeout=120,
-               headers={"X-Requested-With": "XMLHttpRequest"})
-    r.raise_for_status()
+    for intento in range(4):
+        try:
+            r = s.post(URL_FILTRO, params=params, data=data, timeout=120,
+                       headers={"X-Requested-With": "XMLHttpRequest"})
+            r.raise_for_status()
+            break
+        except requests.RequestException as e:
+            if intento == 3:
+                raise
+            print(f"  (reintento del listado: {e.__class__.__name__})", flush=True)
+            time.sleep(10 * (intento + 1))
     soup = BeautifulSoup(r.text, "lxml")
 
     normas = []
@@ -221,9 +200,6 @@ def descargar_texto(s: requests.Session, norma: Norma, reintentos=2) -> str:
 # --------------------------------------------------------------------------
 # Clasificación y extractos
 # --------------------------------------------------------------------------
-PATRONES = {cat: [re.compile(p) for p in pats] for cat, pats in CATEGORIAS.items()}
-
-
 def clasificar(norma: Norma):
     cabecera = normalizar(f"{norma.entidad} {norma.titulo} {norma.sumilla}")
     cats = [cat for cat, pats in PATRONES.items() if any(p.search(cabecera) for p in pats)]
@@ -241,10 +217,10 @@ def clasificar(norma: Norma):
                 break
     menciona_atu = bool(emitida_por_atu or norma.menciones_atu
                         or REGEX_ATU_TEXTO.search(norma.sumilla))
-    if REGEX_EXCLUIR.search(normalizar(norma.sumilla)) and not menciona_atu:
+    if normalizar(norma.sumilla).strip().startswith(tuple(EXCLUIR)) and not menciona_atu:
         cats = []
-    if menciona_atu and "ATU y transporte urbano" not in cats:
-        cats.insert(0, "ATU y transporte urbano")
+    if menciona_atu and CAT_ATU not in cats:
+        cats.insert(0, CAT_ATU)
     norma.categorias = cats
     return bool(cats)
 
@@ -468,6 +444,65 @@ def enviar_telegram(cfg, ruta_docx: Path, mensajes, titulo: str):
 
 # --------------------------------------------------------------------------
 # --------------------------------------------------------------------------
+# Historial del panel web
+# --------------------------------------------------------------------------
+def fecha_iso(fecha: str) -> str:
+    try:
+        return datetime.strptime(fecha, "%d/%m/%Y").strftime("%Y-%m-%d")
+    except ValueError:
+        return ""
+
+
+def publicar_historial(normas, seleccion, ruta_docx: Path):
+    """Agrega la revisión a docs/data/normas.json y copia el Word a docs/resumenes."""
+    destino = DIR_WEB / "resumenes" / ruta_docx.name
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(ruta_docx, destino)
+
+    archivo = DIR_WEB / "data" / "normas.json"
+    archivo.parent.mkdir(parents=True, exist_ok=True)
+    datos = (json.loads(archivo.read_text(encoding="utf-8")) if archivo.exists()
+             else {"normas": [], "revisadas_por_dia": {}})
+
+    # Total de normas revisadas por fecha de publicación (para los indicadores)
+    por_dia = {}
+    for n in normas:
+        f = fecha_iso(n.fecha)
+        if f:
+            por_dia[f] = por_dia.get(f, 0) + 1
+    # max(): en modo --diario la fecha de ayer solo trae sus extraordinarias
+    rpd = datos["revisadas_por_dia"]
+    for f, c in por_dia.items():
+        rpd[f] = max(rpd.get(f, 0), c)
+
+    nuevas = {}
+    for n in seleccion:
+        nuevas[codigo_norma(n) or n.url] = {
+            "id": codigo_norma(n) or n.url,
+            "fecha": fecha_iso(n.fecha),
+            "entidad": n.entidad,
+            "titulo": n.titulo,
+            "sumilla": n.sumilla,
+            "categorias": n.categorias,
+            "extraordinaria": n.extraordinaria,
+            "dispone": extracto_articulos(n.texto),
+            "montos": montos(n.texto),
+            "menciones_atu": n.menciones_atu,
+            "url": n.url,
+            "url_texto": url_texto(n),
+            "url_pdf": n.url_pdf,
+            "resumen": f"resumenes/{ruta_docx.name}",
+        }
+    conservar = [x for x in datos["normas"] if x["id"] not in nuevas]
+    datos["normas"] = sorted(conservar + list(nuevas.values()),
+                             key=lambda x: (x["fecha"], x["entidad"]), reverse=True)
+    datos["actualizado"] = datetime.now(HORA_LIMA).strftime("%Y-%m-%dT%H:%M:%S-05:00")
+    datos["categorias"] = list(CATEGORIAS)
+    archivo.write_text(json.dumps(datos, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"  Historial del panel: {len(datos['normas'])} normas ({archivo})")
+
+
+# --------------------------------------------------------------------------
 def main():
     ap = argparse.ArgumentParser(description="Monitor de normas El Peruano para la ATU")
     ap.add_argument("--desde", help="dd/mm/aaaa (por defecto: hoy)")
@@ -479,6 +514,8 @@ def main():
     ap.add_argument("--no-enviar", action="store_true", help="solo genera el Word")
     ap.add_argument("--chat-id", action="store_true",
                     help="muestra el chat_id de quien escribió al bot y termina")
+    ap.add_argument("--publicar", action="store_true",
+                    help="agrega las normas al historial del panel web (docs/data)")
     ap.add_argument("--diario", action="store_true",
                     help="normas de hoy más las ediciones extraordinarias de ayer "
                          "(publicadas de noche, después de la revisión del día anterior)")
@@ -552,6 +589,9 @@ def main():
     ruta = carpeta / nombre
     generar_word(seleccion, len(normas), desde, hasta, ruta)
     print(f"  Word generado: {ruta}")
+
+    if args.publicar:
+        publicar_historial(normas, seleccion, ruta)
 
     if args.no_enviar:
         return

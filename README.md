@@ -19,7 +19,7 @@ Los Word quedan en la carpeta `resumenes`.
 ## Cómo decide qué normas incluir
 
 - Lee la lista del portal (entidad, título y sumilla) y descarga el texto completo de cada norma.
-- Busca palabras clave por tema (lista `CATEGORIAS` al inicio de `monitor_normas.py`; se pueden agregar o quitar).
+- Busca palabras clave por tema (`docs/config/palabras_clave.json`, editable desde el panel).
 - Si el texto completo menciona a la ATU (aunque la sumilla no lo diga, p. ej. en anexos de una
   transferencia del MEF), la norma se marca en rojo con el fragmento donde aparece.
 - Se descartan designaciones, renuncias, encargos y viajes, salvo que sean de la ATU.
@@ -30,6 +30,19 @@ Envía el listado de normas (con enlaces) y el Word adjunto a su chat o grupo de
 Pasos para crear el bot y obtener el `chat_id` en `config.ini`. Si prefiere no dejar el token en el
 archivo, guárdelo como variable de entorno de su usuario (una sola vez, en PowerShell):
 `[Environment]::SetEnvironmentVariable("MONITOR_TELEGRAM_TOKEN", "123456789:AAH...", "User")`
+
+## Panel web
+
+<https://reneearmasr.github.io/monitor-normas-elperuano/> (carpeta `docs/`, GitHub Pages):
+
+- **Normas**: historial de normas detectadas con buscador, filtros por tema, entidad y fechas,
+  detalle (lo que dispone, montos, menciones a la ATU), enlaces y CSV.
+- **Indicadores**: normas por semana y tema, entidades más frecuentes.
+- **Palabras clave**: agregar o quitar términos (se guardan en `docs/config/palabras_clave.json`
+  con un token de GitHub de permisos mínimos; instrucciones en la misma pestaña).
+
+Cada ejecución con `--publicar` agrega las normas a `docs/data/normas.json` y copia el Word a
+`docs/resumenes/`.
 
 ## Ejecución diaria en GitHub Actions (recomendado)
 

@@ -11,6 +11,13 @@ on:
         required: false
         default: ""
 
+permissions:
+  contents: write   # para guardar el historial del panel web (docs/)
+
+concurrency:
+  group: monitor
+  cancel-in-progress: false
+
 jobs:
   monitor:
     runs-on: ubuntu-latest
@@ -25,13 +32,26 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Revisar normas y enviar por Telegram
+      - name: Revisar normas, enviar por Telegram y actualizar el panel
         env:
           MONITOR_TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           MONITOR_TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           ARGUMENTOS: ${{ inputs.argumentos }}
           PYTHONIOENCODING: utf-8
-        run: python monitor_normas.py ${ARGUMENTOS:---diario}
+        run: python monitor_normas.py ${ARGUMENTOS:---diario} --publicar
+
+      - name: Publicar historial en el panel
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data docs/resumenes
+          if git diff --cached --quiet; then
+            echo "Sin cambios en el panel."
+          else
+            git commit -m "Panel: normas al $(TZ=America/Lima date +%d/%m/%Y)"
+            git pull --rebase --autostash
+            git push
+          fi
 
       - name: Guardar el Word como artefacto
         if: always()

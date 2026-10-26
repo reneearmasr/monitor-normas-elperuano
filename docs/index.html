@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monitor de Normas ATU</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232a78d6'/><path d='M9 8h11l4 4v12H9z' fill='white'/><path d='M12 15h9M12 19h9' stroke='%232a78d6' stroke-width='2'/></svg>">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --surface-2: #f0efec;
+  --text: #0b0b0b;
+  --text-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11,11,11,0.10);
+  --accent: #2a78d6;
+  --s1: #2a78d6; /* ATU y transporte urbano */
+  --s2: #eb6834; /* Normatividad presupuestal */
+  --s3: #1baf7a; /* Inversiones */
+  --critical: #d03b3b;
+  --good: #006300;
+  --shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --surface-2: #262624;
+    --text: #f0efec; --text-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --accent: #3987e5; --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+    --critical: #e66767; --good: #0ca30c; --shadow: none;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --surface-2: #262624;
+  --text: #f0efec; --text-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+  --accent: #3987e5; --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+  --critical: #e66767; --good: #0ca30c; --shadow: none;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { overflow-x: hidden; }
+body {
+  margin: 0; background: var(--page); color: var(--text);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+a { color: var(--accent); }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+header { background: var(--surface); border-bottom: 1px solid var(--border); }
+.top { display: flex; align-items: center; gap: 16px; padding: 14px 0 0; flex-wrap: wrap; }
+.top h1 { font-size: 20px; margin: 0; letter-spacing: -.01em; }
+.top .sub { color: var(--text-2); font-size: 13px; }
+.top .right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+.btn {
+  font: inherit; font-size: 14px; border: 1px solid var(--border); background: var(--surface);
+  color: var(--text); border-radius: 8px; padding: 7px 12px; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+}
+.btn:hover { background: var(--surface-2); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn:disabled { opacity: .5; cursor: default; }
+nav.tabs { display: flex; gap: 4px; margin-top: 10px; overflow-x: auto; }
+nav.tabs button {
+  font: inherit; font-size: 14px; background: none; border: 0; color: var(--text-2);
+  padding: 10px 12px; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap;
+}
+nav.tabs button[aria-selected="true"] { color: var(--text); border-bottom-color: var(--accent); font-weight: 600; }
+main { padding: 20px 0 48px; }
+section[hidden] { display: none; }
+
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; box-shadow: var(--shadow); }
+.kpi .lbl { color: var(--text-2); font-size: 13px; display: flex; align-items: center; gap: 6px; }
+.kpi .val { font-size: 28px; font-weight: 650; letter-spacing: -.02em; margin-top: 2px; }
+.kpi .note { color: var(--muted); font-size: 12px; }
+.dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; flex: none; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+.filters input[type=search], .filters select, .filters input[type=date] {
+  font: inherit; font-size: 14px; padding: 7px 10px; border: 1px solid var(--border);
+  border-radius: 8px; background: var(--surface); color: var(--text); min-width: 0;
+}
+.filters input[type=search] { flex: 1 1 260px; }
+.filters select { width: 220px; max-width: 100%; text-overflow: ellipsis; }
+@media (max-width: 560px) { .filters select, .filters input[type=search] { flex: 1 1 100%; width: 100%; } }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.seg button { font: inherit; font-size: 13px; border: 0; background: var(--surface); color: var(--text-2); padding: 7px 10px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--border); }
+.seg button[aria-pressed="true"] { background: var(--surface-2); color: var(--text); font-weight: 600; }
+label.chk { display: inline-flex; gap: 6px; align-items: center; font-size: 14px; color: var(--text-2); cursor: pointer; }
+.count { color: var(--text-2); font-size: 13px; margin: 0 0 10px; display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; box-shadow: var(--shadow); }
+.card .meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 13px; color: var(--text-2); }
+.card h3 { font-size: 15px; margin: 6px 0 4px; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
+.card p.sum { margin: 0; color: var(--text); }
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; border: 1px solid var(--border); border-radius: 999px; padding: 1px 8px; color: var(--text-2); background: var(--surface); }
+.chip.atu { border-color: var(--critical); color: var(--critical); font-weight: 600; }
+.chip.ext { background: var(--surface-2); }
+details { margin-top: 8px; font-size: 14px; }
+details summary { cursor: pointer; color: var(--text-2); font-size: 13px; }
+details .blk { margin: 8px 0 0; color: var(--text-2); }
+details .blk b { color: var(--text); }
+.mencion { border-left: 3px solid var(--critical); padding: 4px 10px; margin: 6px 0; font-style: italic; color: var(--text-2); }
+.links { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; font-size: 13px; }
+.empty { text-align: center; color: var(--text-2); padding: 40px 0; }
+
+.grid2 { display: grid; grid-template-columns: 3fr 2fr; gap: 12px; }
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; box-shadow: var(--shadow); min-width: 0; }
+.panel h2 { font-size: 15px; margin: 0 0 2px; }
+.panel .desc { color: var(--text-2); font-size: 13px; margin: 0 0 12px; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--text-2); margin-bottom: 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+svg text { fill: var(--muted); font-size: 11px; font-family: inherit; }
+svg .val { fill: var(--text-2); font-size: 11px; }
+svg .lbl { fill: var(--text-2); font-size: 12px; }
+.tip {
+  position: fixed; pointer-events: none; z-index: 20; background: var(--surface); color: var(--text);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; font-size: 13px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.15); display: none; min-width: 160px;
+}
+.tip .row { display: flex; align-items: center; gap: 6px; justify-content: space-between; }
+.tip .row span:first-child { display: inline-flex; align-items: center; gap: 6px; color: var(--text-2); }
+.tip b { font-variant-numeric: tabular-nums; }
+
+.kw-cat { margin-bottom: 14px; }
+.kw-cat h3 { font-size: 15px; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; }
+.kw-list { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.kw { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 2px 4px 2px 10px; }
+.kw button { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 15px; line-height: 1; padding: 0 4px; border-radius: 999px; }
+.kw button:hover { color: var(--critical); }
+.kw.new { border-color: var(--accent); }
+.kw .hits { color: var(--muted); font-size: 11px; }
+.kw-add { display: flex; gap: 6px; max-width: 460px; }
+.kw-add input { flex: 1; font: inherit; font-size: 14px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); min-width: 0; }
+.savebar { position: sticky; bottom: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; box-shadow: 0 -4px 16px rgba(0,0,0,.06); margin-top: 12px; }
+.savebar .msg { font-size: 14px; color: var(--text-2); flex: 1 1 240px; }
+.savebar input { font: inherit; font-size: 14px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); width: 260px; max-width: 100%; }
+.help { font-size: 13px; color: var(--text-2); }
+.help ol { padding-left: 18px; margin: 6px 0; }
+.ok { color: var(--good); } .err { color: var(--critical); }
+footer { color: var(--muted); font-size: 12px; padding: 0 0 24px; }
+
+@media (max-width: 820px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid2 { grid-template-columns: 1fr; }
+  .top .right { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>Monitor de Normas – ATU</h1>
+        <div class="sub" id="actualizado">Cargando…</div>
+      </div>
+      <div class="right">
+        <a class="btn" href="https://diariooficial.elperuano.pe/Normas" target="_blank" rel="noopener">El Peruano ↗</a>
+        <button class="btn" id="tema" title="Cambiar tema claro/oscuro">◐</button>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="normas" aria-selected="true">Normas</button>
+      <button role="tab" data-tab="indicadores" aria-selected="false">Indicadores</button>
+      <button role="tab" data-tab="claves" aria-selected="false">Palabras clave</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- Normas -->
+  <section id="tab-normas">
+    <div class="filters">
+      <input type="search" id="q" placeholder="Buscar en título, sumilla, entidad…">
+      <select id="fTema"><option value="">Todos los temas</option></select>
+      <select id="fEntidad"><option value="">Todas las entidades</option></select>
+      <div class="seg" id="fRango">
+        <button data-dias="1">Hoy</button>
+        <button data-dias="7" aria-pressed="true">7 días</button>
+        <button data-dias="30">30 días</button>
+        <button data-dias="90">90 días</button>
+        <button data-dias="0">Todo</button>
+      </div>
+      <label class="chk"><input type="checkbox" id="fAtu"> Solo con mención a la ATU</label>
+    </div>
+    <div class="kpis" id="kpisNormas"></div>
+    <p class="count"><span id="conteo"></span><a href="#" id="csv">Descargar CSV</a></p>
+    <div id="lista"></div>
+    <div style="text-align:center"><button class="btn" id="mas" hidden>Ver más</button></div>
+  </section>
+
+  <!-- Indicadores -->
+  <section id="tab-indicadores" hidden>
+    <div class="filters">
+      <div class="seg" id="iRango">
+        <button data-dias="30">30 días</button>
+        <button data-dias="90" aria-pressed="true">90 días</button>
+        <button data-dias="0">Todo</button>
+      </div>
+    </div>
+    <div class="kpis" id="kpisInd"></div>
+    <div class="grid2">
+      <div class="panel">
+        <h2>Normas de interés por semana</h2>
+        <p class="desc">Cada norma se cuenta una vez, en su tema principal.</p>
+        <div class="legend" id="leyenda"></div>
+        <div id="chSemanas"></div>
+      </div>
+      <div class="panel">
+        <h2>Entidades con más normas de interés</h2>
+        <p class="desc">Top 10 del periodo.</p>
+        <div id="chEntidades"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Palabras clave -->
+  <section id="tab-claves" hidden>
+    <div class="panel" style="margin-bottom:12px">
+      <h2>Cómo funcionan</h2>
+      <div class="help">
+        Una norma entra al resumen si su entidad, título o sumilla contiene alguno de estos términos
+        (no distingue mayúsculas ni tildes). Un <b>*</b> al final acepta cualquier terminación:
+        <code>presupuest*</code> = presupuesto, presupuestal, presupuestaria…
+        Además, toda norma cuyo texto completo mencione a la ATU se incluye siempre.
+        El número junto a cada término indica cuántas normas del historial lo contienen.
+        Los cambios se aplican desde la siguiente revisión diaria.
+      </div>
+    </div>
+    <div class="panel" id="kwEditor">Cargando…</div>
+    <div class="savebar">
+      <span class="msg" id="kwMsg">Sin cambios.</span>
+      <input type="password" id="ghToken" placeholder="Token de GitHub (solo la 1.ª vez)" autocomplete="off">
+      <button class="btn" id="kwDescartar" disabled>Descartar</button>
+      <button class="btn primary" id="kwGuardar" disabled>Guardar cambios</button>
+    </div>
+    <details class="help" style="margin-top:12px">
+      <summary>¿Cómo obtengo el token de GitHub para guardar?</summary>
+      <ol>
+        <li>Abra <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a> (con su cuenta).</li>
+        <li>Nombre: <i>panel normas</i>. Expiración: la que prefiera.</li>
+        <li>Repository access: <b>Only select repositories</b> → <i>monitor-normas-elperuano</i>.</li>
+        <li>Permissions → Repository permissions → <b>Contents: Read and write</b>.</li>
+        <li>Generate token, cópielo y péguelo en el recuadro de abajo. Queda guardado solo en este navegador.</li>
+      </ol>
+      También puede editar el archivo directamente en
+      <a href="https://github.com/reneearmasr/monitor-normas-elperuano/edit/main/docs/config/palabras_clave.json" target="_blank" rel="noopener">GitHub</a>.
+    </details>
+  </section>
+</main>
+<footer class="wrap">Fuente: Diario Oficial El Peruano. Revisión automática diaria 07:30 (hora de Lima).</footer>
+<div class="tip" id="tip"></div>
+
+<script>
+const REPO = "reneearmasr/monitor-normas-elperuano";
+const RUTA_CLAVES = "docs/config/palabras_clave.json";
+const CAT_ATU = "ATU y transporte urbano";
+const COLOR = {"ATU y transporte urbano": "var(--s1)", "Normatividad presupuestal": "var(--s2)", "Inversiones": "var(--s3)"};
+const colorDe = c => COLOR[c] || "var(--muted)";
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[\s\-–—]+/g, " ");
+const fmtFecha = iso => iso ? iso.split("-").reverse().join("/") : "";
+const mem = { get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+              set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+
+let DATA = { normas: [], revisadas_por_dia: {}, categorias: Object.keys(COLOR) };
+let pagina = 50;
+
+/* ---------- tema ---------- */
+const temaGuardado = mem.get("tema");
+if (temaGuardado) document.documentElement.dataset.theme = temaGuardado;
+$("#tema").onclick = () => {
+  const oscuro = document.documentElement.dataset.theme
+    ? document.documentElement.dataset.theme === "dark"
+    : matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.dataset.theme = oscuro ? "light" : "dark";
+  mem.set("tema", document.documentElement.dataset.theme);
+};
+
+/* ---------- pestañas ---------- */
+document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => {
+  document.querySelectorAll("nav.tabs button").forEach(x => x.setAttribute("aria-selected", x === b));
+  document.querySelectorAll("main section").forEach(s => s.hidden = s.id !== "tab-" + b.dataset.tab);
+  mem.set("tab", b.dataset.tab);
+  if (b.dataset.tab === "indicadores") pintarIndicadores();
+});
+
+/* ---------- utilidades de fechas ---------- */
+const hoyISO = () => new Date(Date.now() - 5 * 3600e3).toISOString().slice(0, 10);
+function desdeDias(dias) {
+  if (!dias) return "";
+  const d = new Date(hoyISO() + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() - (dias - 1));
+  return d.toISOString().slice(0, 10);
+}
+function segmento(id, alCambiar) {
+  const cont = $(id);
+  cont.querySelectorAll("button").forEach(b => b.onclick = () => {
+    cont.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    alCambiar();
+  });
+  return () => +cont.querySelector('[aria-pressed="true"]').dataset.dias;
+}
+
+/* ---------- Normas ---------- */
+const diasNormas = segmento("#fRango", () => { pagina = 50; pintarNormas(); });
+["#q", "#fTema", "#fEntidad", "#fAtu"].forEach(id => $(id).addEventListener("input", () => { pagina = 50; pintarNormas(); }));
+
+function filtradas() {
+  const q = norm($("#q").value).trim(), tema = $("#fTema").value, ent = $("#fEntidad").value;
+  const desde = desdeDias(diasNormas()), soloAtu = $("#fAtu").checked;
+  return DATA.normas.filter(n =>
+    (!desde || n.fecha >= desde) &&
+    (!tema || n.categorias.includes(tema)) &&
+    (!ent || n.entidad === ent) &&
+    (!soloAtu || n.categorias.includes(CAT_ATU)) &&
+    (!q || norm(n.titulo + " " + n.sumilla + " " + n.entidad + " " + (n.dispone || "")).includes(q)));
+}
+
+function kpi(lbl, val, note, color) {
+  return `<div class="kpi"><div class="lbl">${color ? `<span class="dot" style="background:${color}"></span>` : ""}${esc(lbl)}</div>
+    <div class="val">${val}</div><div class="note">${note || "&nbsp;"}</div></div>`;
+}
+
+function pintarKpisNormas(lista) {
+  const desde = desdeDias(diasNormas());
+  const revisadas = Object.entries(DATA.revisadas_por_dia).filter(([f]) => !desde || f >= desde).reduce((a, [, c]) => a + c, 0);
+  const porCat = c => lista.filter(n => n.categorias[0] === c).length;
+  $("#kpisNormas").innerHTML =
+    kpi("Normas de interés", lista.length, `de ${revisadas.toLocaleString("es-PE")} revisadas`) +
+    DATA.categorias.map(c => kpi(c, porCat(c), c === CAT_ATU ? "incluye menciones en el texto" : "tema principal", colorDe(c))).join("");
+}
+
+function tarjeta(n) {
+  const chips = n.categorias.map(c => c === CAT_ATU
+    ? `<span class="chip atu"><span class="dot" style="background:${colorDe(c)}"></span>${esc(c)}</span>`
+    : `<span class="chip"><span class="dot" style="background:${colorDe(c)}"></span>${esc(c)}</span>`).join("");
+  const det = [];
+  if (n.dispone) det.push(`<div class="blk"><b>Dispone:</b> ${esc(n.dispone)}</div>`);
+  if (n.montos?.length) det.push(`<div class="blk"><b>Montos citados:</b> ${n.montos.map(esc).join(", ")}</div>`);
+  if (n.menciones_atu?.length) det.push(`<div class="blk"><b>Mención a la ATU:</b>${n.menciones_atu.map(m => `<div class="mencion">${esc(m)}</div>`).join("")}</div>`);
+  return `<article class="card">
+    <div class="meta"><span>${fmtFecha(n.fecha)}</span>·<span>${esc(n.entidad)}</span>${n.extraordinaria ? '<span class="chip ext">Edición extraordinaria</span>' : ""}${chips}</div>
+    <h3><a href="${esc(n.url_texto)}" target="_blank" rel="noopener">${esc(n.titulo)}</a></h3>
+    <p class="sum">${esc(n.sumilla)}</p>
+    ${det.length ? `<details><summary>Ver detalle</summary>${det.join("")}</details>` : ""}
+    <div class="links">
+      <a href="${esc(n.url_texto)}" target="_blank" rel="noopener">Texto completo</a>
+      <a href="${esc(n.url)}" target="_blank" rel="noopener">El Peruano</a>
+      ${n.url_pdf ? `<a href="${esc(n.url_pdf)}" target="_blank" rel="noopener">PDF</a>` : ""}
+      ${n.resumen ? `<a href="${esc(n.resumen)}">Word del día</a>` : ""}
+    </div></article>`;
+}
+
+function pintarNormas() {
+  const lista = filtradas();
+  pintarKpisNormas(lista);
+  $("#conteo").textContent = `${lista.length} norma${lista.length === 1 ? "" : "s"}`;
+  $("#lista").innerHTML = lista.length
+    ? lista.slice(0, pagina).map(tarjeta).join("")
+    : `<div class="empty">No hay normas con estos filtros.</div>`;
+  $("#mas").hidden = lista.length <= pagina;
+}
+$("#mas").onclick = () => { pagina += 50; pintarNormas(); };
+
+$("#csv").onclick = e => {
+  e.preventDefault();
+  const cols = ["fecha", "entidad", "titulo", "sumilla", "categorias", "extraordinaria", "url_texto"];
+  const filas = filtradas().map(n => cols.map(c => {
+    let v = c === "categorias" ? n.categorias.join(" / ") : c === "fecha" ? fmtFecha(n.fecha) : n[c];
+    return '"' + String(v ?? "").replace(/"/g, '""') + '"';
+  }).join(";"));
+  const blob = new Blob(["﻿" + [cols.join(";"), ...filas].join("\r\n")], { type: "text/csv" });
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+  a.download = `normas_atu_${hoyISO()}.csv`; a.click(); URL.revokeObjectURL(a.href);
+};
+
+/* ---------- Indicadores ---------- */
+const diasInd = segmento("#iRango", pintarIndicadores);
+const tip = $("#tip");
+function mostrarTip(e, html) {
+  tip.innerHTML = html; tip.style.display = "block";
+  const r = tip.getBoundingClientRect();
+  let x = e.clientX + 14, y = e.clientY + 14;
+  if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 14;
+  if (y + r.height > innerHeight - 8) y = e.clientY - r.height - 14;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+}
+const ocultarTip = () => tip.style.display = "none";
+
+function lunes(iso) {
+  const d = new Date(iso + "T00:00:00Z"); const w = (d.getUTCDay() + 6) % 7;
+  d.setUTCDate(d.getUTCDate() - w); return d.toISOString().slice(0, 10);
+}
+
+function pintarIndicadores() {
+  const desde = desdeDias(diasInd());
+  const lista = DATA.normas.filter(n => !desde || n.fecha >= desde);
+  const revisadas = Object.entries(DATA.revisadas_por_dia).filter(([f]) => !desde || f >= desde).reduce((a, [, c]) => a + c, 0);
+  const atuTexto = lista.filter(n => n.menciones_atu?.length).length;
+  const entidades = new Set(lista.map(n => n.entidad)).size;
+  $("#kpisInd").innerHTML =
+    kpi("Normas revisadas", revisadas.toLocaleString("es-PE"), "publicadas en El Peruano") +
+    kpi("De interés", lista.length, revisadas ? `${(lista.length / revisadas * 100).toFixed(1)} % de lo publicado` : "") +
+    kpi("Involucran a la ATU", lista.filter(n => n.categorias.includes(CAT_ATU)).length, `${atuTexto} solo detectadas en el texto`, colorDe(CAT_ATU)) +
+    kpi("Entidades emisoras", entidades, "distintas en el periodo");
+
+  $("#leyenda").innerHTML = DATA.categorias.map(c => `<span><span class="dot" style="background:${colorDe(c)}"></span>${esc(c)}</span>`).join("");
+  graficoSemanas(lista);
+  graficoEntidades(lista);
+}
+
+function graficoSemanas(lista) {
+  const cats = DATA.categorias;
+  const semanas = {};
+  lista.forEach(n => { const s = lunes(n.fecha); (semanas[s] ||= {})[n.categorias[0]] = (semanas[s][n.categorias[0]] || 0) + 1; });
+  // incluir semanas sin normas dentro del rango revisado
+  Object.keys(DATA.revisadas_por_dia).forEach(f => { const desde = desdeDias(diasInd()); if (!desde || f >= desde) semanas[lunes(f)] ||= {}; });
+  const keys = Object.keys(semanas).sort();
+  const el = $("#chSemanas");
+  if (!keys.length) { el.innerHTML = '<div class="empty">Sin datos.</div>'; return; }
+  const W = Math.max(el.clientWidth, 300), H = 240, m = { l: 30, r: 8, t: 10, b: 28 };
+  const iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const tot = k => cats.reduce((a, c) => a + (semanas[k][c] || 0), 0);
+  const bruto = Math.max(...keys.map(tot), 1);
+  const paso10 = Math.pow(10, Math.floor(Math.log10(bruto / 4 || 1)));
+  const marca = [1, 2, 5, 10].map(f => f * paso10).find(st => bruto / st <= 5) || paso10 * 10;
+  const nMarcas = Math.ceil(bruto / marca), max = nMarcas * marca;
+  const paso = iw / keys.length, bw = Math.max(Math.min(paso * 0.7, 36), 3);
+  const y = v => m.t + ih - v / max * ih;
+  let s = `<svg width="${W}" height="${H}" role="img" aria-label="Normas de interés por semana">`;
+  for (let i = 0; i <= nMarcas; i++) {
+    const v = marca * i, yy = y(v);
+    s += `<line x1="${m.l}" x2="${W - m.r}" y1="${yy}" y2="${yy}" stroke="var(--grid)"/><text x="${m.l - 6}" y="${yy + 4}" text-anchor="end">${Math.round(v)}</text>`;
+  }
+  const cadaN = Math.ceil(keys.length / Math.floor(iw / 48));
+  keys.forEach((k, i) => {
+    const x = m.l + paso * i + (paso - bw) / 2;
+    let acum = 0;
+    const segs = cats.filter(c => semanas[k][c]);
+    segs.forEach((c, j) => {
+      const v = semanas[k][c], y0 = y(acum), y1 = y(acum + v);
+      const h = Math.max(y0 - y1 - (j < segs.length - 1 ? 2 : 0), 1);
+      const yt = y0 - h, rr = Math.min(4, h, bw / 2);
+      // el segmento superior lleva las esquinas redondeadas; el resto, rectos con 2px de separación
+      s += j === segs.length - 1
+        ? `<path d="M${x},${y0}V${yt + rr}a${rr},${rr} 0 0 1 ${rr},${-rr}h${bw - 2 * rr}a${rr},${rr} 0 0 1 ${rr},${rr}V${y0}Z" fill="${colorDe(c)}"/>`
+        : `<rect x="${x}" y="${yt}" width="${bw}" height="${h}" fill="${colorDe(c)}"/>`;
+      acum += v;
+    });
+    if (i % cadaN === 0) s += `<text x="${x + bw / 2}" y="${H - 8}" text-anchor="middle">${k.slice(8, 10)}/${k.slice(5, 7)}</text>`;
+    s += `<rect x="${m.l + paso * i}" y="${m.t}" width="${paso}" height="${ih}" fill="transparent" data-k="${k}"/>`;
+  });
+  s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(0)}" y2="${y(0)}" stroke="var(--axis)"/></svg>`;
+  el.innerHTML = s;
+  el.querySelectorAll("rect[data-k]").forEach(r => {
+    r.onmousemove = e => {
+      const k = r.dataset.k, fin = new Date(k + "T00:00:00Z"); fin.setUTCDate(fin.getUTCDate() + 6);
+      mostrarTip(e, `<div style="margin-bottom:4px"><b>Semana ${fmtFecha(k)} – ${fmtFecha(fin.toISOString().slice(0, 10))}</b></div>` +
+        cats.map(c => `<div class="row"><span><span class="dot" style="background:${colorDe(c)}"></span>${esc(c)}</span><b>${semanas[k][c] || 0}</b></div>`).join("") +
+        `<div class="row" style="border-top:1px solid var(--border);margin-top:4px;padding-top:4px"><span>Total</span><b>${tot(k)}</b></div>`);
+    };
+    r.onmouseleave = ocultarTip;
+  });
+}
+
+function graficoEntidades(lista) {
+  const cuenta = {};
+  lista.forEach(n => cuenta[n.entidad] = (cuenta[n.entidad] || 0) + 1);
+  const top = Object.entries(cuenta).sort((a, b) => b[1] - a[1]).slice(0, 10);
+  const el = $("#chEntidades");
+  if (!top.length) { el.innerHTML = '<div class="empty">Sin datos.</div>'; return; }
+  const max = top[0][1];
+  el.innerHTML = top.map(([e, v]) => `
+    <div class="ent" data-e="${esc(e)}" style="margin-bottom:8px;cursor:pointer" title="Ver normas de esta entidad">
+      <div style="display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--text-2)">
+        <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(e)}</span><b style="color:var(--text);font-variant-numeric:tabular-nums">${v}</b></div>
+      <div style="height:10px;margin-top:3px"><div style="height:100%;width:${Math.max(v / max * 100, 2)}%;background:var(--s1);border-radius:0 4px 4px 0"></div></div>
+    </div>`).join("");
+  el.querySelectorAll(".ent").forEach(d => d.onclick = () => {
+    $("#fEntidad").value = d.dataset.e;
+    document.querySelector('#fRango [data-dias="0"]').click();
+    document.querySelector('nav.tabs [data-tab="normas"]').click();
+  });
+}
+addEventListener("resize", () => { if (!$("#tab-indicadores").hidden) pintarIndicadores(); });
+
+/* ---------- Palabras clave ---------- */
+let CLAVES = null, CLAVES_ORIG = "", SHA = null;
+const tokenGuardado = mem.get("ghToken");
+if (tokenGuardado) $("#ghToken").placeholder = "Token guardado en este navegador ✓";
+
+function patron(t) {
+  let s = norm(t).trim(); const com = s.endsWith("*"); s = s.replace(/\*+$/, "").trim();
+  const cuerpo = s.split(" ").map(p => p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("\\s+");
+  return new RegExp("\\b" + cuerpo + (com ? "\\w*" : "\\b"));
+}
+function aciertos(t) {
+  try { const re = patron(t); return DATA.normas.filter(n => re.test(norm(n.entidad + " " + n.titulo + " " + n.sumilla))).length; }
+  catch { return 0; }
+}
+
+function pintarClaves() {
+  const orig = JSON.parse(CLAVES_ORIG);
+  const bloque = (titulo, color, lista, origLista, clave, conHits) => `
+    <div class="kw-cat"><h3>${color ? `<span class="dot" style="background:${color}"></span>` : ""}${esc(titulo)}
+      <span style="color:var(--muted);font-weight:400;font-size:13px">(${lista.length})</span></h3>
+      <div class="kw-list">${lista.map((t, i) => `<span class="kw${origLista.includes(t) ? "" : " new"}">${esc(t)}
+        ${conHits ? `<span class="hits">${aciertos(t)}</span>` : ""}
+        <button title="Quitar" data-k="${esc(clave)}" data-i="${i}">×</button></span>`).join("")}</div>
+      <form class="kw-add" data-k="${esc(clave)}"><input placeholder="Agregar término…" maxlength="80"><button class="btn">Agregar</button></form>
+    </div>`;
+  $("#kwEditor").innerHTML =
+    Object.entries(CLAVES.categorias).map(([c, l]) => bloque(c, colorDe(c), l, orig.categorias[c] || [], "cat:" + c, true)).join("") +
+    `<hr style="border:0;border-top:1px solid var(--border);margin:6px 0 14px">` +
+    bloque("Se descartan si la sumilla empieza con… (salvo que mencionen a la ATU)", "", CLAVES.excluir_si_sumilla_empieza_con || [],
+      orig.excluir_si_sumilla_empieza_con || [], "excluir", false);
+
+  const listaDe = k => k === "excluir" ? (CLAVES.excluir_si_sumilla_empieza_con ||= []) : CLAVES.categorias[k.slice(4)];
+  $("#kwEditor").querySelectorAll(".kw button").forEach(b => b.onclick = () => {
+    listaDe(b.dataset.k).splice(+b.dataset.i, 1); cambio();
+  });
+  $("#kwEditor").querySelectorAll("form.kw-add").forEach(f => f.onsubmit = e => {
+    e.preventDefault();
+    const inp = f.querySelector("input"), t = inp.value.trim().toLowerCase().replace(/\s+/g, " ");
+    if (!t) return;
+    const l = listaDe(f.dataset.k);
+    if (!l.includes(t)) l.push(t);
+    cambio();
+    $(`form.kw-add[data-k="${CSS.escape(f.dataset.k)}"] input`)?.focus();
+  });
+}
+function cambio() {
+  const sucio = JSON.stringify(CLAVES) !== CLAVES_ORIG;
+  $("#kwGuardar").disabled = $("#kwDescartar").disabled = !sucio;
+  $("#kwMsg").className = "msg";
+  $("#kwMsg").textContent = sucio ? "Hay cambios sin guardar." : "Sin cambios.";
+  pintarClaves();
+}
+$("#kwDescartar").onclick = () => { CLAVES = JSON.parse(CLAVES_ORIG); cambio(); };
+
+const b64 = s => btoa(String.fromCharCode(...new TextEncoder().encode(s)));
+$("#kwGuardar").onclick = async () => {
+  const token = $("#ghToken").value.trim() || mem.get("ghToken");
+  const msg = $("#kwMsg");
+  if (!token) { msg.className = "msg err"; msg.textContent = "Pegue su token de GitHub (ver instrucciones abajo)."; $("#ghToken").focus(); return; }
+  $("#kwGuardar").disabled = true; msg.className = "msg"; msg.textContent = "Guardando…";
+  const api = `https://api.github.com/repos/${REPO}/contents/${RUTA_CLAVES}`;
+  const hdr = { Authorization: "Bearer " + token, Accept: "application/vnd.github+json" };
+  try {
+    const actual = await fetch(api + "?ref=main", { headers: hdr });
+    if (!actual.ok) throw new Error(actual.status === 401 ? "token inválido o vencido" : "sin acceso al repositorio (" + actual.status + ")");
+    SHA = (await actual.json()).sha;
+    const r = await fetch(api, { method: "PUT", headers: hdr, body: JSON.stringify({
+      message: "Palabras clave actualizadas desde el panel", sha: SHA,
+      content: b64(JSON.stringify(CLAVES, null, 2) + "\n"), branch: "main" }) });
+    if (!r.ok) throw new Error(r.status === 403 || r.status === 404 ? "el token no tiene permiso de escritura (Contents: Read and write)" : "error " + r.status);
+    mem.set("ghToken", token); $("#ghToken").value = ""; $("#ghToken").placeholder = "Token guardado en este navegador ✓";
+    CLAVES_ORIG = JSON.stringify(CLAVES); cambio();
+    msg.className = "msg ok"; msg.textContent = "Guardado. Se aplicará desde la próxima revisión diaria.";
+  } catch (e) {
+    msg.className = "msg err"; msg.textContent = "No se pudo guardar: " + e.message + ".";
+    $("#kwGuardar").disabled = false;
+  }
+};
+
+/* ---------- carga ---------- */
+async function cargar() {
+  try {
+    const r = await fetch("data/normas.json?v=" + Date.now());
+    if (r.ok) DATA = await r.json();
+  } catch {}
+  DATA.categorias ||= Object.keys(COLOR);
+  if (DATA.actualizado) {
+    const d = new Date(DATA.actualizado);
+    $("#actualizado").textContent = "Actualizado: " + d.toLocaleString("es-PE", { dateStyle: "medium", timeStyle: "short", timeZone: "America/Lima" }) +
+      ` · ${DATA.normas.length} normas en el historial`;
+  } else $("#actualizado").textContent = "Aún sin datos.";
+  DATA.categorias.forEach(c => $("#fTema").add(new Option(c, c)));
+  [...new Set(DATA.normas.map(n => n.entidad))].sort().forEach(e => $("#fEntidad").add(new Option(e, e)));
+  pintarNormas();
+
+  try {
+    const r = await fetch("config/palabras_clave.json?v=" + Date.now());
+    CLAVES = await r.json(); CLAVES_ORIG = JSON.stringify(CLAVES); pintarClaves();
+  } catch { $("#kwEditor").textContent = "No se pudo cargar el archivo de palabras clave."; }
+
+  const tab = mem.get("tab");
+  if (tab && tab !== "normas") document.querySelector(`nav.tabs [data-tab="${tab}"]`)?.click();
+}
+cargar();
+</script>
+</body>
+</html>
