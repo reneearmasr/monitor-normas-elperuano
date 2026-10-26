@@ -46,13 +46,17 @@
     "Normatividad presupuestal"
    ],
    "extraordinaria": true,
-   "dispone": "",
-   "montos": [],
+   "dispone": "Artículo 1.- Aprobar la Transferencia Financiera de la Unidad Ejecutora 001-1091 Seguro Integral de Salud - SIS hasta por la suma de S/ 11,061,013.00 (ONCE MILLONES SESENTA Y UN MIL TRECE CON 00/100 SOLES), con cargo a las Fuentes de Financiamiento: Recursos Ordinarios y Recursos Directamente Recaudados, a favor de las unidades ejecutoras descritas en el Anexo N° 01 “Pliego 135 - Seguro Integral de Salud - Unidad Ejecutora 001 - 1091 Seguro Integral de Salud - Transferencia Financiera - Recursos Ordinarios - Recursos Directamente Recaudados - Octubre 2026” adjunto a la presente resolución, para financiar las prestaciones de salud y administrativas vinculadas a traslados de emergencia, en…",
+   "montos": [
+    "S/ 2",
+    "S/ 11,061,013.00",
+    "S/11,061,013.00"
+   ],
    "menciones_atu": [],
    "url": "https://busquedas.elperuano.pe/dispositivo/EX/2568160-1",
    "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2568160-1",
    "url_pdf": "https://busquedas.elperuano.pe/dispositivo/EX/2568160-1/pdf",
-   "resumen": "resumenes/Normas_ElPeruano_20261025.docx"
+   "resumen": "resumenes/Normas_ElPeruano_20261026.docx"
   },
   {
    "id": "2568104-1",
@@ -3903,7 +3907,7 @@
   "2026-10-19": 19,
   "2026-10-20": 56
  },
- "actualizado": "2026-10-26T10:27:21-05:00",
+ "actualizado": "2026-10-26T10:29:43-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
