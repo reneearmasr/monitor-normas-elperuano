@@ -502,7 +502,12 @@ def main():
         if not token:
             print("Primero coloque bot_token en config.ini.")
             return 1
-        r = requests.get(f"https://api.telegram.org/bot{token}/getUpdates", timeout=30).json()
+        api = f"https://api.telegram.org/bot{token}"
+        yo = requests.get(f"{api}/getMe", timeout=30).json()
+        print(f"Bot: @{yo.get('result', {}).get('username')}  {yo.get('description', '')}")
+        r = requests.get(f"{api}/getUpdates", timeout=30).json()
+        if not r.get("ok"):
+            print(f"Telegram respondió: {r.get('description')}")
         chats = {}
         for u in r.get("result", []):
             chat = (u.get("message") or u.get("channel_post") or {}).get("chat")
