@@ -464,7 +464,7 @@ function tarjeta(n) {
   if (n.montos?.length) det.push(`<div class="blk"><b>Montos citados:</b> ${n.montos.map(esc).join(", ")}</div>`);
   if (n.menciones_atu?.length) det.push(`<div class="blk"><b>Mención a la ATU:</b>${n.menciones_atu.map(m => `<div class="mencion">${esc(m)}</div>`).join("")}</div>`);
   return `<article class="card" style="--k:${colorDe(n.categorias[0])}">
-    <div class="meta"><span>${fmtFecha(n.fecha)}</span>·<span>${esc(n.entidad)}</span>${n.extraordinaria ? '<span class="chip ext">Edición extraordinaria</span>' : ""}${chips}</div>
+    <div class="meta"><span>${fmtFecha(n.fecha)}</span>·<span>${esc(n.entidad)}</span>${n.extraordinaria ? '<span class="chip ext">Edición extraordinaria</span>' : n.digital ? '<span class="chip ext">Publicación digital</span>' : ""}${chips}</div>
     <h3><a href="${esc(n.url_texto)}" target="_blank" rel="noopener">${esc(n.titulo)}</a></h3>
     <p class="sum">${esc(n.sumilla)}</p>
     ${det.length ? `<details><summary>Ver detalle</summary>${det.join("")}</details>` : ""}

@@ -117,6 +117,8 @@ class Norma:
     url: str
     url_pdf: str
     extraordinaria: bool
+    codigo: str = ""          # código de publicación, p. ej. 2568110-1
+    digital: bool = False     # "Publicación Digital" (sobre todo municipalidades)
     texto: str = ""
     categorias: list = field(default_factory=list)
     menciones_atu: list = field(default_factory=list)
@@ -155,7 +157,8 @@ def listar_normas(s: requests.Session, desde: date, hasta: date, solo_extra=Fals
     soup = BeautifulSoup(r.text, "lxml")
 
     normas = []
-    for art in soup.select("article.edicionesoficiales_articulos"):
+    # Las "Publicación Digital" usan la clase edicionesoficiales_articulos_dig y enlaces de epdoc2
+    for art in soup.select("article.edicionesoficiales_articulos, article.edicionesoficiales_articulos_dig"):
         cont = art.select_one(".ediciones_texto")
         if not cont:
             continue
@@ -163,21 +166,31 @@ def listar_normas(s: requests.Session, desde: date, hasta: date, solo_extra=Fals
         fecha_tag = cont.select_one("p b")
         parrafos = cont.find_all("p")
         pdf = art.select_one(".ediciones_botones a[href$='/pdf']")
+        url = enlace["href"] if enlace else ""
+        portada = art.select_one(".ediciones_pdf img")
+        m = (re.search(r"/(\d+-\d+)(?:/|$)", url)
+             or re.search(r"/(\d+-\d+)_Portada", portada["src"] if portada else ""))
+        entidad = cont.h4.get_text(" ", strip=True) if cont.h4 else ""
+        digital = "_dig" in " ".join(art.get("class", [])) or "Publicación Digital" in entidad
         normas.append(Norma(
             fecha=(fecha_tag.get_text(strip=True).replace("Fecha:", "").strip()
                    if fecha_tag else ""),
-            entidad=cont.h4.get_text(" ", strip=True) if cont.h4 else "",
+            entidad=re.sub(r"\s*Publicación Digital\s*$", "", entidad).strip(),
             titulo=enlace.get_text(" ", strip=True) if enlace else "",
             sumilla=parrafos[-1].get_text(" ", strip=True) if len(parrafos) > 1 else "",
-            url=enlace["href"] if enlace else "",
+            url=url,
             url_pdf=pdf["href"] if pdf else "",
             extraordinaria=bool(cont.select_one(".extraordinaria")),
+            codigo=m.group(1) if m else "",
+            digital=digital,
         ))
     return normas
 
 
 def codigo_norma(norma: Norma) -> str:
     """Código de publicación, p. ej. 2567343-1, tomado del enlace del portal."""
+    if norma.codigo:
+        return norma.codigo
     m = re.search(r"/(\d+-\d+)(?:/|$)", norma.url)
     return m.group(1) if m else ""
 
@@ -574,6 +587,9 @@ def generar_word(seleccion, total, desde, hasta, ruta: Path):
                 _par(c1, n.entidad, 7.5, color=GRIS, despues=1, interlineado=1.05)
                 _celda(c2, n.sumilla, 8.5)
                 _celda(c3, n.fecha, 8.5, align=WD_ALIGN_PARAGRAPH.CENTER)
+                if n.digital and not n.extraordinaria:
+                    _par(c3, "Publicación digital", 7, color=GRIS, align=WD_ALIGN_PARAGRAPH.CENTER,
+                         despues=0, interlineado=1.0)
                 if n.extraordinaria:
                     _par(c3, "Edición extraordinaria", 7, color=ROJO, align=WD_ALIGN_PARAGRAPH.CENTER,
                          despues=0, interlineado=1.0)
@@ -610,7 +626,8 @@ def generar_word(seleccion, total, desde, hasta, ruta: Path):
 
                 fila_dato("Entidad emisora", n.entidad)
                 fila_dato("Publicación", f"{n.fecha} · "
-                          + ("Edición extraordinaria" if n.extraordinaria else "Edición ordinaria"))
+                          + ("Edición extraordinaria" if n.extraordinaria
+                             else "Publicación digital" if n.digital else "Edición ordinaria"))
                 fila_dato("Temas", " · ".join(n.categorias))
                 fila_dato("Sumilla", n.sumilla)
                 disp = extracto_articulos(n.texto)
@@ -747,6 +764,7 @@ def publicar_historial(normas, seleccion, ruta_docx: Path, hasta: date):
             "sumilla": n.sumilla,
             "categorias": n.categorias,
             "extraordinaria": n.extraordinaria,
+            "digital": n.digital,
             "dispone": extracto_articulos(n.texto),
             "montos": montos(n.texto),
             "menciones_atu": n.menciones_atu,
