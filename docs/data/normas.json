@@ -1,6 +1,28 @@
 {
  "normas": [
   {
+   "id": "2568620-1",
+   "fecha": "2026-10-27",
+   "entidad": "AUTORIDAD DE TRANSPORTE URBANO PARA LIMA Y CALLAO",
+   "titulo": "RESOLUCIÓN  N° 249-2026-ATU/PE",
+   "sumilla": "Autorizan transferencia financiera a favor de las municipalidades distritales de la provincia de Lima con las que se celebraron convenios para la fiscalización del servicio público de transporte terrestre de personas",
+   "categorias": [
+    "ATU y transporte urbano",
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "dispone": "Artículo 1.- Transferencia Financiera a favor de las Municipalidades Autorizar la transferencia financiera del Pliego 203: Autoridad de Transporte Urbano para Lima y Callao - ATU hasta por la suma de S/ 254 994.63 (Doscientos Cincuenta Y Cuatro Mil Novecientos Noventa Y Cuatro Con 63/100 Soles), correspondiente a la Octava Liquidación - 2026, a favor de las municipalidades distritales de la provincia de Lima, con las cuales se celebraron convenios de cooperación interinstitucional para la fiscalización del servicio público de transporte terrestre de personas, conforme a lo establecido en el literal ñ) del numeral 13.1 del artículo 13 de la Ley N° 32513, Ley de Presupuesto del Sector Público…",
+   "montos": [
+    "S/ 254 994.63",
+    "S/ 451,961.25"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2568620-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2568620-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2568620-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261027.docx"
+  },
+  {
    "id": "2566976-1",
    "fecha": "2026-10-26",
    "entidad": "AUTORIDAD DE TRANSPORTE URBANO PARA LIMA Y CALLAO",
@@ -3690,9 +3712,10 @@
   "2026-10-17": 80,
   "2026-10-18": 32,
   "2026-10-19": 19,
-  "2026-10-20": 56
+  "2026-10-20": 56,
+  "2026-10-27": 24
  },
- "actualizado": "2026-10-26T17:10:58-05:00",
+ "actualizado": "2026-10-27T08:23:25-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
