@@ -44,6 +44,15 @@ archivo, guárdelo como variable de entorno de su usuario (una sola vez, en Powe
 Cada ejecución con `--publicar` agrega las normas a `docs/data/normas.json` y copia el Word a
 `docs/resumenes/`.
 
+## Envío por correo institucional (Power Automate)
+
+Cada ejecución publica una copia del último Word con nombre fijo:
+<https://reneearmasr.github.io/monitor-normas-elperuano/resumenes/Normas_ElPeruano_ultimo.docx>
+
+Un flujo programado de Power Automate (cuenta @atu.gob.pe, 08:30 hora de Lima) lo descarga a OneDrive
+con "Cargar un archivo desde una dirección URL", obtiene su contenido y lo envía adjunto con
+"Enviar un correo electrónico (V2)" de Office 365 Outlook. Ninguna clave institucional sale de Microsoft 365.
+
 ## Ejecución diaria en GitHub Actions (recomendado)
 
 El workflow `.github/workflows/monitor.yml` corre todos los días a las 07:30 (hora de Lima) con
