@@ -3720,5 +3720,10 @@
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
- ]
+ ],
+ "ultimo_resumen": {
+  "fecha": "2026-10-27",
+  "archivo": "resumenes/Normas_ElPeruano_20261027.docx",
+  "normas_de_interes": 1
+ }
 }

@@ -709,7 +709,7 @@ def fecha_iso(fecha: str) -> str:
         return ""
 
 
-def publicar_historial(normas, seleccion, ruta_docx: Path):
+def publicar_historial(normas, seleccion, ruta_docx: Path, hasta: date):
     """Agrega la revisión a docs/data/normas.json y copia el Word a docs/resumenes."""
     destino = DIR_WEB / "resumenes" / ruta_docx.name
     destino.parent.mkdir(parents=True, exist_ok=True)
@@ -719,6 +719,12 @@ def publicar_historial(normas, seleccion, ruta_docx: Path):
     archivo.parent.mkdir(parents=True, exist_ok=True)
     datos = (json.loads(archivo.read_text(encoding="utf-8")) if archivo.exists()
              else {"normas": [], "revisadas_por_dia": {}})
+
+    # Copia con nombre fijo del resumen más reciente: la usa el envío por correo (Power Automate)
+    if hasta.isoformat() >= datos.get("ultimo_resumen", {}).get("fecha", ""):
+        shutil.copyfile(ruta_docx, DIR_WEB / "resumenes" / "Normas_ElPeruano_ultimo.docx")
+        datos["ultimo_resumen"] = {"fecha": hasta.isoformat(), "archivo": f"resumenes/{ruta_docx.name}",
+                                   "normas_de_interes": len(seleccion)}
 
     # Total de normas revisadas por fecha de publicación (para los indicadores)
     por_dia = {}
@@ -847,7 +853,7 @@ def main():
     print(f"  Word generado: {ruta}")
 
     if args.publicar:
-        publicar_historial(normas, seleccion, ruta)
+        publicar_historial(normas, seleccion, ruta, hasta)
 
     if args.no_enviar:
         return
