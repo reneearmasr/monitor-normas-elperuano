@@ -1,6 +1,53 @@
 {
  "normas": [
   {
+   "id": "2569039-1",
+   "fecha": "2026-10-28",
+   "entidad": "JUSTICIA Y DERECHOS HUMANOS",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° 401-2026-JUS",
+   "sumilla": "Autorizan Transferencia Financiera a favor de la Contraloría General de la República",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Transferencia Financiera a favor de la Contraloría General de la República: Autorizar la Transferencia Financiera del Pliego 006: Ministerio de Justicia y Derechos Humanos hasta por la suma de S/ 50 750,00 (Cincuenta Mil Setecientos Cincuenta y 00/100 Soles) a favor del Pliego 019: Contraloría General, Unidad Ejecutora 001-196: Contraloría General, correspondiente a la totalidad de la retribución económica para los periodos 2024 y 2025, destinada a la contratación y pago a la sociedad de auditoría que, previo concurso público de méritos, sea designada para realizar la Auditoría Financiera Gubernamental correspondiente a dichos periodos. Artículo 2.- Financiamiento: La…",
+   "montos": [
+    "S/ 713 326 414,00",
+    "S/ 53 330,00",
+    "S/ 50 750,00",
+    "S/ 2 580,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2569039-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2569039-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2569039-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261028.docx"
+  },
+  {
+   "id": "2568708-1",
+   "fecha": "2026-10-27",
+   "entidad": "COMERCIO EXTERIOR Y TURISMO",
+   "titulo": "RESOLUCIÓN MINISTERIAL N° 394-2026-MINCETUR",
+   "sumilla": "Aprueban transferencia financiera a favor de la Autoridad Nacional de Infraestructura para financiar proyecto de inversión en el mejoramiento de los servicios turísticos públicos en recursos turísticos del Parque Arqueológico Choquequirao del departamento de Cusco",
+   "categorias": [
+    "Normatividad presupuestal",
+    "Inversiones"
+   ],
+   "extraordinaria": true,
+   "digital": false,
+   "dispone": "Artículo 1.- Transferencia financiera a favor de la Unidad Ejecutora 001-1750: AUTORIDAD NACIONAL DE INFRAESTRUCTURA - ANIN del Pliego 029: AUTORIDAD NACIONAL DE INFRAESTRUCTURA Aprobar una transferencia financiera del Pliego 035: Ministerio de Comercio Exterior y Turismo, hasta por la suma de S/ 9 500 000,00 (NUEVE MILLONES QUINIENTOS MIL CON 00/100 SOLES); en la Fuente de Financiamiento 1. Recursos Ordinarios, a favor de la Unidad Ejecutora: 001-1750: AUTORIDAD NACIONAL DE INFRAESTRUCTURA - ANIN del Pliego 029: AUTORIDAD NACIONAL DE INFRAESTRUCTURA, para el financiamiento de la ACTIVIDAD 5001253 “MEJORAMIENTO DE LOS SERVICIOS TURÍSTICOS PÚBLICOS EN RECURSOS TURÍSTICOS DEL PARQUE…",
+   "montos": [
+    "S/ 44 375 850,00",
+    "S/ 9 500 000,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/EX/2568708-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2568708-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/EX/2568708-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261028.docx"
+  },
+  {
    "id": "2568620-1",
    "fecha": "2026-10-27",
    "entidad": "AUTORIDAD DE TRANSPORTE URBANO PARA LIMA Y CALLAO",
@@ -4130,17 +4177,18 @@
   "2026-10-18": 32,
   "2026-10-19": 19,
   "2026-10-20": 56,
-  "2026-10-27": 24
+  "2026-10-27": 24,
+  "2026-10-28": 38
  },
- "actualizado": "2026-10-27T11:13:57-05:00",
+ "actualizado": "2026-10-28T11:32:29-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-10-27",
-  "archivo": "resumenes/Normas_ElPeruano_20261027.docx",
-  "normas_de_interes": 1
+  "fecha": "2026-10-28",
+  "archivo": "resumenes/Normas_ElPeruano_20261028.docx",
+  "normas_de_interes": 2
  }
 }
