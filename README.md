@@ -49,7 +49,7 @@ Cada ejecución con `--publicar` agrega las normas a `docs/data/normas.json` y c
 Cada ejecución publica una copia del último Word con nombre fijo:
 <https://reneearmasr.github.io/monitor-normas-elperuano/resumenes/Normas_ElPeruano_ultimo.docx>
 
-Un flujo programado de Power Automate (cuenta @atu.gob.pe, 09:00 hora de Lima) lo descarga a OneDrive
+Un flujo programado de Power Automate (cuenta @atu.gob.pe, 09:10 hora de Lima) lo descarga a OneDrive
 con "Cargar un archivo desde una dirección URL", obtiene su contenido y lo envía adjunto con
 "Enviar un correo electrónico (V2)" de Office 365 Outlook. Ninguna clave institucional sale de Microsoft 365.
 
