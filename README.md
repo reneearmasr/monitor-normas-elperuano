@@ -49,13 +49,14 @@ Cada ejecución con `--publicar` agrega las normas a `docs/data/normas.json` y c
 Cada ejecución publica una copia del último Word con nombre fijo:
 <https://reneearmasr.github.io/monitor-normas-elperuano/resumenes/Normas_ElPeruano_ultimo.docx>
 
-Un flujo programado de Power Automate (cuenta @atu.gob.pe, 08:30 hora de Lima) lo descarga a OneDrive
+Un flujo programado de Power Automate (cuenta @atu.gob.pe, 09:00 hora de Lima) lo descarga a OneDrive
 con "Cargar un archivo desde una dirección URL", obtiene su contenido y lo envía adjunto con
 "Enviar un correo electrónico (V2)" de Office 365 Outlook. Ninguna clave institucional sale de Microsoft 365.
 
 ## Ejecución diaria en GitHub Actions (recomendado)
 
-El workflow `.github/workflows/monitor.yml` corre todos los días a las 07:30 (hora de Lima) con
+El workflow `.github/workflows/monitor.yml` corre todos los días desde las 06:00 (hora de Lima; alarmas
+de respaldo 06:40, 07:20 y 08:00, solo la primera envía) con
 `--diario` (normas de hoy + extraordinarias de ayer) y envía por Telegram. No depende de la PC ni
 del firewall de la oficina. Usa los secrets del repositorio `TELEGRAM_BOT_TOKEN` y `TELEGRAM_CHAT_ID`.
 
