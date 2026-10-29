@@ -2,8 +2,11 @@ name: Monitor normas El Peruano
 
 on:
   schedule:
-    # Todos los días a las 07:30 hora de Lima (12:30 UTC). GitHub puede demorar unos minutos.
-    - cron: "30 12 * * *"
+    # Tres alarmas (hora de Lima): 06:40, 07:10 y 07:40. GitHub a veces atrasa o se salta una;
+    # la primera que corre envía y las demás no hacen nada (ver "Ver si ya se envió hoy").
+    - cron: "40 11 * * *"
+    - cron: "10 12 * * *"
+    - cron: "40 12 * * *"
   workflow_dispatch:
     inputs:
       argumentos:
@@ -25,14 +28,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Ver si ya se envió hoy
+        id: hoy
+        run: |
+          git fetch --quiet origin main
+          HOY=$(TZ=America/Lima date +%F)
+          ULTIMA=$(git show origin/main:docs/data/ultima_ejecucion.txt 2>/dev/null || true)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$ULTIMA" = "$HOY" ]; then
+            echo "Ya se envió hoy ($HOY); esta alarma de respaldo no hace nada."
+            echo "omitir=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/setup-python@v5
+        if: steps.hoy.outputs.omitir != 'true'
         with:
           python-version: "3.12"
           cache: pip
 
       - run: pip install -r requirements.txt
+        if: steps.hoy.outputs.omitir != 'true'
 
       - name: Revisar normas, enviar por Telegram y actualizar el panel
+        if: steps.hoy.outputs.omitir != 'true'
         env:
           MONITOR_TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           MONITOR_TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -41,7 +58,9 @@ jobs:
         run: python monitor_normas.py ${ARGUMENTOS:---diario} --publicar
 
       - name: Publicar historial en el panel
+        if: steps.hoy.outputs.omitir != 'true'
         run: |
+          TZ=America/Lima date +%F > docs/data/ultima_ejecucion.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/data docs/resumenes
@@ -54,7 +73,7 @@ jobs:
           fi
 
       - name: Guardar el Word como artefacto
-        if: always()
+        if: always() && steps.hoy.outputs.omitir != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: resumen-normas
