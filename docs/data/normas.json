@@ -1,6 +1,49 @@
 {
  "normas": [
   {
+   "id": "2568412-1",
+   "fecha": "2026-10-29",
+   "entidad": "GOBIERNO REGIONAL DE PIURA",
+   "titulo": "ACUERDO  N° 2889-2026/GRP-CR",
+   "sumilla": "Aprueban modificación del Presupuesto Institucional para el Año Fiscal 2026 del Gobierno Regional de Piura",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo Primero.- APROBAR la modificación del Presupuesto Institucional del Año Fiscal 2026 del Pliego 457: Gobierno Regional del Departamento de Piura, en la fuente de financiamiento Recursos Determinados, hasta por los montos que se detallan a continuación, como consecuencia de la variación de los índices de distribución correspondientes: Rubro Incremento (S/) Reducción (S/) 15 Fondo de Compensación Regional - FONCOR 88,658,616.00 - 18 Canon y Sobrecanon, Regalías, Renta de Aduanas y Participaciones - 59,372,530.00 Variación neta 29,286,086.00 - Artículo Segundo.- ENCARGAR a Gerencia General Regional, a través de la Gerencia Regional de Planeamiento, Presupuesto, Modernización y…",
+   "montos": [
+    "S/ 936,091,142.00",
+    "S/ 88,658,616.00",
+    "S/ 79,000,285.00",
+    "S/ 59,372,530.00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2568412-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2568412-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2568412-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261029.docx"
+  },
+  {
+   "id": "2569110-1",
+   "fecha": "2026-10-29",
+   "entidad": "AMBIENTE",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° D000350-2026-MINAM",
+   "sumilla": "Aprueban Lineamientos para la elaboración y modificación de la clasificación anticipada de proyectos de inversión con características comunes o similares en el marco del Sistema Nacional de Evaluación del Impacto Ambiental",
+   "categorias": [
+    "Inversiones"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Aprobar el Lineamiento N° 004-2026- MINAM-DM denominado “Lineamientos para la elaboración y modificación de la clasificación anticipada de proyectos de inversión con características comunes o similares en el marco del Sistema Nacional de Evaluación del Impacto Ambiental”, que forman parte integrante de la presente Resolución Ministerial. Artículo 2.- Dejar sin efecto la Resolución Ministerial N° 207-2016-MINAM, que aprueba las Disposiciones para la clasificación anticipada de proyectos de inversión en el marco del Sistema Nacional de Evaluación de Impacto Ambiental (SEIA). Artículo 3.- Disponer la publicación de la presente Resolución Ministerial y los Lineamientos en la sede…",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2569110-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2569110-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2569110-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261029.docx"
+  },
+  {
    "id": "2569039-1",
    "fecha": "2026-10-28",
    "entidad": "JUSTICIA Y DERECHOS HUMANOS",
@@ -4178,17 +4221,18 @@
   "2026-10-19": 19,
   "2026-10-20": 56,
   "2026-10-27": 24,
-  "2026-10-28": 38
+  "2026-10-28": 38,
+  "2026-10-29": 75
  },
- "actualizado": "2026-10-28T13:27:24-05:00",
+ "actualizado": "2026-10-29T09:41:24-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-10-28",
-  "archivo": "resumenes/Normas_ElPeruano_20261028.docx",
+  "fecha": "2026-10-29",
+  "archivo": "resumenes/Normas_ElPeruano_20261029.docx",
   "normas_de_interes": 2
  }
 }
