@@ -1,6 +1,209 @@
 {
  "normas": [
   {
+   "id": "2570249-1",
+   "fecha": "2026-10-31",
+   "entidad": "SEGURO INTEGRAL DE SALUD",
+   "titulo": "RESOLUCIÓN JEFATURAL  N° 000169-2026-SIS/J",
+   "sumilla": "Aprueban transferencia financiera del FISSAL a favor de unidades ejecutoras para financiar prestaciones de salud e incentivos prestacionales",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Aprobación de la Transferencia Financiera Aprobar la Transferencia Financiera de la Unidad Ejecutora 002 - 1423 Fondo Intangible Solidario de Salud - FISSAL, correspondiente al calendario octubre 2026, hasta por la suma de S/ 4,196,872.00 (CUATRO MILLONES CIENTO NOVENTA Y SEIS MIL OCHOCIENTOS SETENTA Y DOS Y 00/100 SOLES), con cargo a la Fuente de Financiamiento 1. Recursos Ordinarios, a favor de las unidades ejecutoras descritas en los Anexos N° 1 “Pliego 135 - Seguro Integral de Salud - Unidad Ejecutora 002 - 1423 Fondo Intangible Solidario de Salud Transferencia Financiera - Recursos Ordinarios - Calendario octubre 2026 - Pago por Prestación - Financiamiento de Prestaciones…",
+   "montos": [
+    "S/ 4,196,872.00",
+    "S/ 2,264,023.00",
+    "S/ 1,932,849.00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2570249-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2570249-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2570249-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261031.docx"
+  },
+  {
+   "id": "2569903-1",
+   "fecha": "2026-10-31",
+   "entidad": "ORGANISMO SUPERVISOR DE INVERSIÓN PRIVADA EN TELECOMUNICACIONES",
+   "titulo": "RESOLUCIÓN  N° 000286-2026-GG/OSIPTEL",
+   "sumilla": "Modifican el Instructivo Técnico para el cumplimiento de las Normas Complementarias para la Implementación del Registro Nacional de Equipos Terminales Móviles para la Seguridad aprobado por Resolución de Gerencia General N° 00070-2020-GG/OSIPTEL",
+   "categorias": [
+    "Inversiones"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Modificar el Instructivo Técnico para el cumplimiento de las Normas Complementarias para la Implementación del Registro Nacional de Equipos Terminales Móviles para la Seguridad, aprobado por Resolución de Gerencia General Nº 00070-2020-GG/OSIPTEL; que comprende la modificación del “Formato Nº 16: Registro en línea de la información de la fecha y hora efectiva del bloqueo o desbloqueo del equipo terminal móvil, y de la suspensión, baja o reactivación del servicio”; e incorporación del “Formato Nº 28: Entrega de la información para la baja o reactivación de los servicios públicos móviles de telecomunicaciones y/o el bloqueo o desbloqueo de equipos terminales móviles utilizados o…",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2569903-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2569903-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2569903-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261031.docx"
+  },
+  {
+   "id": "2569774-1",
+   "fecha": "2026-10-31",
+   "entidad": "ORGANISMO SUPERVISOR DE INVERSIÓN PRIVADA EN TELECOMUNICACIONES",
+   "titulo": "RESOLUCIÓN  N° 000140 2026-CD/OSIPTEL",
+   "sumilla": "Aprueban Mandato de Interconexión entre las empresas FIBERMAX TELECOM S.A.C. e INTEGRATEL PERÚ S.A.A.",
+   "categorias": [
+    "Inversiones"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Aprobar el Mandato de Interconexión, correspondiente al procedimiento tramitado con el Expediente N° 00001-2026-CD-DPRC/MI entre las empresas FIBERMAX TELECOM S.A.C. e INTEGRATEL PERÚ S.A.A., a efectos de incorporar el intercambio de SMS, al contrato de Interconexión, aprobado mediante la Resolución N° 00389-2023-GG/OSIPTEL y modificatorias, conforme al anexo del Informe N° 000207-2026-DPRC/OSIPTEL. Artículo 2.- El mandato de Interconexión que se aprueba en el artículo 1 de la presente resolución, entra en vigencia al día siguiente de la publicación de la presente resolución en el D iario O ficial El Peruano. Artículo 3.- Encargar a la Oficina de Administración y Finanzas…",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2569774-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2569774-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2569774-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261031.docx"
+  },
+  {
+   "id": "2569923-1",
+   "fecha": "2026-10-31",
+   "entidad": "ORGANISMO ESPECIALIZADO PARA LAS CONTRATACIONES PÚBLICAS EFICIENTES",
+   "titulo": "RESOLUCIÓN  N° D000305-2026-OECE-PRE",
+   "sumilla": "Autorizan al Procurador Público y al Procurador Público Adjunto de la Procuraduría Pública Especializada en Materia Hacendaria a conciliar en audiencias y demás diligencias que se deriven de los procesos judiciales tramitados con la Ley Nº 29497 Nueva Ley Procesal del Trabajo y a delegar las facultades para conciliar a favor de los abogados a su cargo",
+   "categorias": [
+    "Inversiones"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Autorizar al Procurador Público y al Procurador Público Adjunto de la Procuraduría Pública Especializada en Materia Hacendaria, para que, de manera indistinta, puedan asistir y conciliar en las audiencias de conciliación que se realicen en el marco de los procesos judiciales que se tramiten bajo los alcances de la Ley Nº 29497, Nueva Ley Procesal del Trabajo, en los que el Organismo Especializado para las Contrataciones Públicas Eficientes (OECE) sea parte demandada o demandante, siempre que resulten de su competencia de conformidad con lo establecido en los artículos 4 y 5 de los “Criterios adicionales sobre las competencias de la Procuraduría Pública Especializada en Materia…",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2569923-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2569923-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2569923-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261031.docx"
+  },
+  {
+   "id": "2567254-1",
+   "fecha": "2026-10-31",
+   "entidad": "ENERGÍA Y MINAS",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° 456-2026-MINEM/DM",
+   "sumilla": "Aprueban texto de la Sexta Modificación al Contrato de Concesión N° 028-94 a suscribirse entre el Ministerio de Energía y Minas y la empresa ELECTRO DUNAS S.A.A. a fin de modificar anexos y dictan otras disposiciones",
+   "categorias": [
+    "Inversiones"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Declarar la resolución ficta que por silencio administrativo positivo reconoció con fecha 7 de marzo de 2023, a favor de la empresa ELECTRO DUNAS S.A.A., la sexta modificación de la Concesión Definitiva de Distribución otorgada mediante Resolución Suprema Nº 066-94-EM, a favor de la citada empresa, con la finalidad de incorporar el sector denominado “Eje Chiribamba-Pacococha”, por las razones y fundamentos legales señalados en la parte considerativa de la presente Resolución Ministerial. Artículo 2.- Aprobar el texto de la Sexta Modificación al Contrato de Concesión Nº 028-94, a suscribirse entre el Ministerio de Energía y Minas y la empresa ELECTRO DUNAS S.A.A., a fin de…",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2567254-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2567254-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2567254-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261031.docx"
+  },
+  {
+   "id": "2570386-2",
+   "fecha": "2026-10-31",
+   "entidad": "ECONOMÍA Y FINANZAS",
+   "titulo": "DECRETO SUPREMO  N° 234-2026-EF",
+   "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor de diversos gobiernos regionales",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Objeto 1.1. Se autoriza una Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026, hasta por la suma de S/ 38 000,00 (TREINTA Y OCHO MIL Y 00/100 SOLES), por la fuente de financiamiento Recursos Ordinarios, a favor de diversos gobiernos regionales, para financiar el pago de la entrega económica y bonificaciones por otorgamiento correspondiente a los condecorados con las Palmas Magisteriales 2025, en el marco del literal f) del numeral 82.1 del artículo 82 de la Ley N° 32513, Ley de Presupuesto del Sector Público para el Año Fiscal 2026, con cargo a los recursos del presupuesto institucional del Ministerio de Educación, de acuerdo con el…",
+   "montos": [
+    "S/ 587 272 027,00",
+    "S/ 38 000,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2570386-2",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2570386-2",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2570386-2/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261031.docx"
+  },
+  {
+   "id": "2570386-3",
+   "fecha": "2026-10-31",
+   "entidad": "ECONOMÍA Y FINANZAS",
+   "titulo": "DECRETO SUPREMO  N° 235-2026-EF",
+   "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor del Gobierno Regional de Ancash",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Objeto Se autoriza una Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026, hasta por la suma de S/ 4 090 168,00 (CUATRO MILLONES NOVENTA MIL CIENTO SESENTA Y OCHO Y 00/100 SOLES), por la fuente de financiamiento Recursos Ordinarios, a favor del Gobierno Regional de Ancash, para financiar la operación y el mantenimiento del Hospital de Apoyo Huarmey, con cargo a los recursos del presupuesto institucional del Ministerio de Salud, en el marco de lo establecido en el artículo 44 de la Ley N° 32513, Ley de Presupuesto del Sector Público para el Año Fiscal 2026, de acuerdo con el siguiente detalle: DE LA: En Soles SECCIÓN PRIMERA : Gobierno Central…",
+   "montos": [
+    "S/ 4 090 168,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2570386-3",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2570386-3",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2570386-3/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261031.docx"
+  },
+  {
+   "id": "2570386-4",
+   "fecha": "2026-10-31",
+   "entidad": "ECONOMÍA Y FINANZAS",
+   "titulo": "DECRETO SUPREMO  N° 236-2026-EF",
+   "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor del Gobierno Regional de Ayacucho",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Objeto Se autoriza una Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026, hasta por la suma de S/ 4 089 671,00 (CUATRO MILLONES OCHENTA Y NUEVE MIL SEISCIENTOS SETENTA Y UNO Y 00/100 SOLES), por la fuente de financiamiento Recursos Ordinarios, a favor del Gobierno Regional de Ayacucho, para financiar la operación y el mantenimiento del Establecimiento de Salud San Juan Bautista, con cargo a los recursos del presupuesto institucional del Ministerio de Salud, en el marco de lo establecido en el artículo 44 de la Ley N° 32513, Ley de Presupuesto del Sector Público para el Año Fiscal 2026, de acuerdo con el siguiente detalle: DE LA: En Soles…",
+   "montos": [
+    "S/ 4 089 671,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2570386-4",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2570386-4",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2570386-4/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261031.docx"
+  },
+  {
+   "id": "2570386-5",
+   "fecha": "2026-10-31",
+   "entidad": "ECONOMÍA Y FINANZAS",
+   "titulo": "DECRETO SUPREMO  N° 237-2026-EF",
+   "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor de la Municipalidad Provincial de Alto Amazonas",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Objeto Se autoriza una Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026, hasta por la suma de S/ 8 111 952,00 (OCHO MILLONES CIENTO ONCE MIL NOVECIENTOS CINCUENTA Y DOS Y 00/100 SOLES), en la fuente de financiamiento Recursos Ordinarios, con cargo a los recursos del presupuesto institucional del Ministerio de Educación, a favor de la Municipalidad Provincial de Alto Amazonas, para financiar la continuidad de la ejecución del proyecto de inversión en infraestructura educativa con CUI N° 2308038 “Mejoramiento de los servicios educativos de inicial, primaria y secundaria de la educación básica regular en la institución educativa Santo Tomás,…",
+   "montos": [
+    "S/ 8 111 952,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2570386-5",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2570386-5",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2570386-5/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261031.docx"
+  },
+  {
+   "id": "2570388-2",
+   "fecha": "2026-10-31",
+   "entidad": "DECRETOS DE URGENCIA",
+   "titulo": "DECRETO DE URGENCIA  N° 016-2026",
+   "sumilla": "Decreto de Urgencia que dicta medidas extraordinarias para la ejecución de actividades de mantenimiento en establecimientos educativos públicos mediante Obras por Impuestos ante el Fenómeno El Niño",
+   "categorias": [
+    "Inversiones"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Objeto El presente Decreto de Urgencia tiene por objeto establecer medidas extraordinarias y temporales en materia económica y financiera orientadas a habilitar y agilizar la ejecución de actividades de mantenimiento correctivo en los establecimientos educativos públicos, vinculadas a la prevención, preparación y respuesta ante el peligro inminente y los efectos generados en el marco de la atención del Fenómeno El Niño 2026-2027, mediante el mecanismo de Obras por Impuestos regulado por la Ley Nº 29230, Ley que impulsa la inversión pública regional y local con la participación del sector privado, y su Reglamento; así como simplificar los plazos y procedimientos aplicables a…",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2570388-2",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2570388-2",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2570388-2/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261031.docx"
+  },
+  {
    "id": "2569846-1",
    "fecha": "2026-10-30",
    "entidad": "VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
@@ -4373,17 +4576,18 @@
   "2026-10-27": 24,
   "2026-10-28": 38,
   "2026-10-29": 75,
-  "2026-10-30": 105
+  "2026-10-30": 105,
+  "2026-10-31": 99
  },
- "actualizado": "2026-10-30T10:46:05-05:00",
+ "actualizado": "2026-10-31T08:11:01-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-10-30",
-  "archivo": "resumenes/Normas_ElPeruano_20261030.docx",
-  "normas_de_interes": 7
+  "fecha": "2026-10-31",
+  "archivo": "resumenes/Normas_ElPeruano_20261031.docx",
+  "normas_de_interes": 10
  }
 }
