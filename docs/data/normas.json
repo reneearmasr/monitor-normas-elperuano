@@ -4577,17 +4577,18 @@
   "2026-10-28": 38,
   "2026-10-29": 75,
   "2026-10-30": 105,
-  "2026-10-31": 99
+  "2026-10-31": 99,
+  "2026-11-01": 38
  },
- "actualizado": "2026-10-31T08:11:01-05:00",
+ "actualizado": "2026-11-01T08:10:34-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-10-31",
-  "archivo": "resumenes/Normas_ElPeruano_20261031.docx",
-  "normas_de_interes": 10
+  "fecha": "2026-11-01",
+  "archivo": "resumenes/Normas_ElPeruano_20261101.docx",
+  "normas_de_interes": 0
  }
 }
