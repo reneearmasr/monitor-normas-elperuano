@@ -1,6 +1,73 @@
 {
  "normas": [
   {
+   "id": "2570897-1",
+   "fecha": "2026-11-03",
+   "entidad": "ENERGÍA Y MINAS",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° 468-2026-MINEM/DM",
+   "sumilla": "Autorizan transferencia financiera a favor del Instituto Nacional de Estadística e Informática – INEI",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Autorizar la transferencia financiera de recursos provenientes de la fuente de financiamiento Recursos Directamente Recaudados de la Unidad Ejecutora N° 001 - Ministerio de Energía y Minas - Central del Pliego 016: Ministerio de Energía y Minas, a favor del Instituto Nacional de Estadística e Informática - INEI, por la suma de S/ 38 123 560,00 (Treinta y Ocho Millones Ciento Veintitrés Mil Quinientos Sesenta y 00/100 soles), para el financiamiento de la ejecución del Censo Nacional de la Pequeña Minería y Minería Artesanal (MAPE), conforme al numeral 17.3 del artículo 17 de la Ley N° 32732. Artículo 2.- La transferencia financiera señalada en el artículo 1 de la presente…",
+   "montos": [
+    "S/ 669 774 898,00",
+    "S/ 38 123 560,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2570897-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2570897-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2570897-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261103.docx"
+  },
+  {
+   "id": "2571016-1",
+   "fecha": "2026-11-03",
+   "entidad": "ECONOMÍA Y FINANZAS",
+   "titulo": "DECRETO SUPREMO  N° 238-2026-EF",
+   "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor de diversos gobiernos locales",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Objeto 1.1 Se autoriza una Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026, hasta por la suma de S/ 13 977 702,00 (TRECE MILLONES NOVECIENTOS SETENTA Y SIETE MIL SETECIENTOS DOS Y 00/100 SOLES), por la fuente de financiamiento Recursos Ordinarios, a favor de once (11) gobiernos locales, para financiar catorce (14) intervenciones priorizadas en el Acta Nº 59 de la Comisión Multisectorial del Fondo para intervenciones ante la ocurrencia de desastres naturales, con cargo a los recursos del presupuesto institucional del Instituto Nacional de Defensa Civil, conforme a lo dispuesto en los numerales 56.1 y 56.2 del artículo 56 de la Ley Nº 32513,…",
+   "montos": [
+    "S/ 359 257 869,00",
+    "S/ 13 977 702,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2571016-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2571016-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2571016-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261103.docx"
+  },
+  {
+   "id": "2571013-1",
+   "fecha": "2026-11-02",
+   "entidad": "CONGRESO DE LA REPÚBLICA",
+   "titulo": "LEY N° 32744",
+   "sumilla": "Ley que aprueba créditos suplementarios para el financiamiento de acciones frente al Fenómeno El Niño 2026-2027 impulso de la infraestructura el fortalecimiento de la seguridad ciudadana salud educación y otros servicios y obligaciones esenciales",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": true,
+   "digital": false,
+   "dispone": "LEY QUE APRUEBA CRÉDITOS SUPLEMENTARIOS PARA EL FINANCIAMIENTO DE ACCIONES FRENTE AL FENÓMENO EL NIÑO 2026-2027, IMPULSO DE LA INFRAESTRUCTURA, EL FORTALECIMIENTO DE LA SEGURIDAD CIUDADANA, SALUD, EDUCACIÓN Y OTROS SERVICIOS Y OBLIGACIONES ESENCIALES Artículo 1 . Objeto de la Ley La presente ley tiene por objeto aprobar medidas que permitan el financiamiento de mayores gastos asociados a acciones frente a la ocurrencia del Fenómeno El Niño 2026-2027, impulso de la infraestructura, el fortalecimiento de la seguridad ciudadana, salud, educación y otros servicios y obligaciones esenciales. Artículo 2 . Aprobación de emisión de bonos 2.1. Se aprueba la emisión interna y/o externa de bonos que,…",
+   "montos": [
+    "S/ 4 428 734 398,00",
+    "S/ 8 228 414 502,00",
+    "S/ 14 557 500,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/EX/2571013-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2571013-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/EX/2571013-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261103.docx"
+  },
+  {
    "id": "2570249-1",
    "fecha": "2026-10-31",
    "entidad": "SEGURO INTEGRAL DE SALUD",
@@ -4579,17 +4646,18 @@
   "2026-10-30": 105,
   "2026-10-31": 99,
   "2026-11-01": 38,
-  "2026-11-02": 15
+  "2026-11-02": 15,
+  "2026-11-03": 35
  },
- "actualizado": "2026-11-02T08:33:38-05:00",
+ "actualizado": "2026-11-03T08:15:24-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-02",
-  "archivo": "resumenes/Normas_ElPeruano_20261102.docx",
-  "normas_de_interes": 0
+  "fecha": "2026-11-03",
+  "archivo": "resumenes/Normas_ElPeruano_20261103.docx",
+  "normas_de_interes": 3
  }
 }
