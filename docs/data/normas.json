@@ -1,6 +1,44 @@
 {
  "normas": [
   {
+   "id": "2572825-1",
+   "fecha": "2026-11-07",
+   "entidad": "PRESIDENCIA DEL CONSEJO DE MINISTROS",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° 372-2026-PCM",
+   "sumilla": "Derogan la Resolución Ministerial N° 305-2013-PCM que aprueba los Lineamientos que definen las Intervenciones en materia de Inversión Pública en el marco de las Políticas de Modernización de la Gestión Pública y la Gestión del Riesgo de Desastres",
+   "categorias": [
+    "Inversiones"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Derogación de la Resolución Ministerial N° 305-2013-PCM Derogar la Resolución Ministerial N° 305-2013-PCM que aprueba los “Lineamientos que definen las Intervenciones en materia de Inversión Pública en el marco de las Políticas de Modernización de la Gestión Pública y la Gestión del Riesgo de Desastres”. Artículo 2.- Publicación La presente Resolución Ministerial es publicada en la sede digital de la Presidencia del Consejo de Ministros ( www.gob.pe/pcm ) el mismo día de su publicación en el Diario Oficial El Peruano. Regístrese, comuníquese y publíquese. LUIS FERNANDO GALARRETA VELARDE Presidente del Consejo de Ministros 2572825-1",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2572825-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2572825-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2572825-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261107.docx"
+  },
+  {
+   "id": "2572755-1",
+   "fecha": "2026-11-07",
+   "entidad": "INSTITUTO PERUANO DEL DEPORTE",
+   "titulo": "RESOLUCIÓN  N° 000161-2026-P/IPD",
+   "sumilla": "Autorizan Transferencia Financiera a favor de la Organización Deportiva Panamericana - Panam Sports",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2572755-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2572755-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2572755-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261107.docx"
+  },
+  {
    "id": "2572224-1",
    "fecha": "2026-11-06",
    "entidad": "TRABAJO Y PROMOCIÓN DEL EMPLEO",
@@ -46,6 +84,30 @@
    "resumen": "resumenes/Normas_ElPeruano_20261106.docx"
   },
   {
+   "id": "2572723-1",
+   "fecha": "2026-11-06",
+   "entidad": "INTERIOR",
+   "titulo": "RESOLUCIÓN MINISTERIAL N° 1617-2026-IN",
+   "sumilla": "Autorizan transferencia financiera de recursos a favor de la Caja de Pensiones Militar Policial",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": true,
+   "digital": false,
+   "dispone": "Artículo 1.- Desagregación de recursos Aprobar la desagregación de los recursos aprobados mediante el numeral 3.1 del artículo 3 de la Ley Nº 32744, Ley que aprueba créditos suplementarios para el financiamiento de acciones frente al Fenómeno El Niño 2026-2027, impulso de la infraestructura, el fortalecimiento de la seguridad ciudadana, salud, educación y otros servicios y obligaciones esenciales, hasta por la suma de S/ 1 097 436 379,00 (MIL NOVENTA Y SIETE MILLONES CUATROCIENTOS TREINTA Y SEIS MIL TRESCIENTOS SETENTA Y NUEVE Y 00/100 SOLES), con cargo a las fuentes de financiamiento Recursos Ordinarios y Recursos por Operaciones Oficiales de Crédito, a favor del Pliego 007: M. del…",
+   "montos": [
+    "S/ 13 397 947 493,00",
+    "S/ 8 228 414 502,00",
+    "S/ 1 097 436 379,00",
+    "S/ 847 436 379,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/EX/2572723-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2572723-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/EX/2572723-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261107.docx"
+  },
+  {
    "id": "2572334-1",
    "fecha": "2026-11-06",
    "entidad": "DESARROLLO AGRARIO Y RIEGO",
@@ -82,6 +144,27 @@
    "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2571992-1",
    "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2571992-1/pdf",
    "resumen": "resumenes/Normas_ElPeruano_20261106.docx"
+  },
+  {
+   "id": "2572698-1",
+   "fecha": "2026-11-06",
+   "entidad": "DEFENSA",
+   "titulo": "RESOLUCIÓN MINISTERIAL N° 01363-2026-DE",
+   "sumilla": "Autorizan transferencia financiera de recursos a favor de la Caja de Pensiones Militar Policial",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": true,
+   "digital": false,
+   "dispone": "Artículo 1 .- Objeto Autorizar a la Unidad Ejecutora 009: Oficina Previsional de las Fuerzas Armadas del Pliego 026: M. de Defensa, a realizar una transferencia financiera de recursos a favor de la Caja de Pensiones Militar Policial, en la fuente de financiamiento Recursos Ordinarios, por el importe de S/ 333 723 436,00 (TRESCIENTOS TREINTA Y TRES MILLONES SETECIENTOS VEINTITRÉS MIL CUATROCIENTOS TREINTA Y SEIS Y 00/100 SOLES), para ser destinados exclusivamente al financiamiento del pago de obligaciones previsionales. Artículo 2 .- Limitaciones sobre el uso de los recursos Los recursos materia de la transferencia financiera autorizada en el artículo 1 de la presente Resolución Ministerial…",
+   "montos": [
+    "S/ 333 723 436,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/EX/2572698-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2572698-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/EX/2572698-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261107.docx"
   },
   {
    "id": "2572378-1",
@@ -5099,17 +5182,18 @@
   "2026-11-03": 35,
   "2026-11-04": 65,
   "2026-11-05": 79,
-  "2026-11-06": 60
+  "2026-11-06": 60,
+  "2026-11-07": 71
  },
- "actualizado": "2026-11-06T08:17:42-05:00",
+ "actualizado": "2026-11-07T08:09:27-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-06",
-  "archivo": "resumenes/Normas_ElPeruano_20261106.docx",
-  "normas_de_interes": 6
+  "fecha": "2026-11-07",
+  "archivo": "resumenes/Normas_ElPeruano_20261107.docx",
+  "normas_de_interes": 4
  }
 }
