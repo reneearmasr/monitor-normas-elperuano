@@ -1,6 +1,50 @@
 {
  "normas": [
   {
+   "id": "2572835-1",
+   "fecha": "2026-11-08",
+   "entidad": "PRODUCE",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° 00396-2026-PRODUCE",
+   "sumilla": "Autorizan transferencia financiera a favor del Núcleo Ejecutor de Compras (NEC) para el sector productivo de Cuero y Calzado",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Transferencia Financiera Autorizar una transferencia financiera a favor del Núcleo Ejecutor de Compras (NEC) para el sector productivo de Cuero y Calzado, hasta por la suma de S/ 345 780,00 (TRESCIENTOS CUARENTA Y CINCO MIL SETECIENTOS OCHENTA Y 00/100 SOLES), para financiar la gestión administrativa y operativa del referido Núcleo Ejecutor de Compras, a fin de atender los requerimientos de bienes manufacturados del Ministerio del Interior, en el marco de lo establecido en el artículo 11 del Decreto Legislativo Nº 1414, Decreto Legislativo que autoriza al Ministerio de la Producción a conformar Núcleos Ejecutores de Compras para promover y facilitar el acceso de las micro y…",
+   "montos": [
+    "S/ 345 780,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2572835-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2572835-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2572835-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261108.docx"
+  },
+  {
+   "id": "2572831-1",
+   "fecha": "2026-11-08",
+   "entidad": "INSTITUTO PERUANO DEL DEPORTE",
+   "titulo": "RESOLUCIÓN  N° 000162-2026-P/IPD",
+   "sumilla": "Aprueban desagregación de recursos de crédito suplementario para financiar la organización de los XX Juegos Panamericanos Lima 2027 y de los VIII Juegos\nParapanamericanos Lima 2027",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1 .- Aprobación de la desagregación Apruébese la desagregación de los recursos del crédito suplementario aprobado por el numeral 3.1 del artículo 3 de la Ley Nº 32744, a favor del Pliego 342: Instituto Peruano del Deporte, a nivel programático, hasta por la suma de S/ 237,000,000.00 (Doscientos Treinta y Siete Millones y 00/100 Soles), por la fuente de financiamiento Recursos por Operaciones Oficiales de Crédito, para financiar la organización de los XX Juegos Panamericanos Lima 2027 y de los VIII Juegos Parapanamericanos Lima 2027, de acuerdo al siguiente detalle: INGRESOS En Soles FUENTE DE FINANCIAMIENTO 3 : Recursos por Operaciones Oficiales de Crédito 1.8 ENDEUDAMIENTO…",
+   "montos": [
+    "S/ 354,452,392.00",
+    "S/ 8,228,414,502.00",
+    "S/ 237,000,000.00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2572831-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2572831-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2572831-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261108.docx"
+  },
+  {
    "id": "2572825-1",
    "fecha": "2026-11-07",
    "entidad": "PRESIDENCIA DEL CONSEJO DE MINISTROS",
@@ -5183,17 +5227,18 @@
   "2026-11-04": 65,
   "2026-11-05": 79,
   "2026-11-06": 60,
-  "2026-11-07": 71
+  "2026-11-07": 71,
+  "2026-11-08": 51
  },
- "actualizado": "2026-11-07T08:09:27-05:00",
+ "actualizado": "2026-11-08T08:08:54-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-07",
-  "archivo": "resumenes/Normas_ElPeruano_20261107.docx",
-  "normas_de_interes": 4
+  "fecha": "2026-11-08",
+  "archivo": "resumenes/Normas_ElPeruano_20261108.docx",
+  "normas_de_interes": 2
  }
 }
