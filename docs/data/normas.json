@@ -1,6 +1,50 @@
 {
  "normas": [
   {
+   "id": "2573074-1",
+   "fecha": "2026-11-10",
+   "entidad": "INSTITUCIONES EDUCATIVAS",
+   "titulo": "RESOLUCIÓN  N° 0791-R-2026",
+   "sumilla": "Rectifican por error material la Resolución Rectoral N° 0142-R-2026 de la Universidad Nacional de Piura en los extremos relativos al monto de la cobertura presupuestal y al ejercicio fiscal correspondiente",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1º.- RECTIFICAR POR ERROR MATERIAL, la Resolución Rectoral Nº 0142-R-2026 del 16.Feb.2026, en los extremos relativos al monto de la cobertura presupuestal y al ejercicio fiscal correspondiente, debiendo quedar redactado de la siguiente manera: EN DONDE DICE: • “...hasta por la suma total de S/. 181,248.00... correspondiente al ejercicio fiscal 2026 y 2027...” DEBE DECIR: • “...hasta por la suma total de S/. 90,624.00... correspondiente al ejercicio fiscal 2026...” Artículo 2º.- DISPONER que los demás extremos de la Resolución Rectoral Nº 0142-R-2026 del 16.Feb.2026 se mantengan subsistentes en todo lo que no se oponga a la presente resolución. Artículo 3º.- DISPONER que la…",
+   "montos": [
+    "S/ 181,248.00",
+    "S/ 90,624.00",
+    "S/ 181,240.00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2573074-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2573074-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2573074-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261110.docx"
+  },
+  {
+   "id": "2573253-1",
+   "fecha": "2026-11-10",
+   "entidad": "ECONOMÍA Y FINANZAS",
+   "titulo": "DECRETO SUPREMO  N° 248-2026-EF",
+   "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor de la Secretaría de Seguridad y Defensa Nacional",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Objeto 1.1 Se autoriza una Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026, hasta por la suma de S/ 289 795,00 (DOSCIENTOS OCHENTA Y NUEVE MIL SETECIENTOS NOVENTA Y CINCO Y 00/100 SOLES), por la fuente de financiamiento Recursos Ordinarios, a favor de la Secretaría de Seguridad y Defensa Nacional, para financiar el inicio de sus operaciones durante los meses de noviembre y diciembre de 2026, con cargo a los recursos del presupuesto institucional de la Presidencia del Consejo de Ministros, en el marco de lo dispuesto en la Quinta Disposición Complementaria Transitoria del Decreto Legislativo N° 1684, Decreto Legislativo que crea la…",
+   "montos": [
+    "S/ 289 795,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2573253-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2573253-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2573253-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261110.docx"
+  },
+  {
    "id": "2572857-1",
    "fecha": "2026-11-09",
    "entidad": "SEGURO INTEGRAL DE SALUD",
@@ -21,6 +65,28 @@
    "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2572857-1",
    "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2572857-1/pdf",
    "resumen": "resumenes/Normas_ElPeruano_20261109.docx"
+  },
+  {
+   "id": "2572865-1",
+   "fecha": "2026-11-09",
+   "entidad": "SEGURO INTEGRAL DE SALUD",
+   "titulo": "RESOLUCIÓN JEFATURAL N° 000175-2026-SIS/J",
+   "sumilla": "Aprueban transferencia financiera del SIS a favor de unidades ejecutoras",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": true,
+   "digital": false,
+   "dispone": "Artículo 1.- Aprobar la transferencia financiera de la Unidad Ejecutora 001-1091 Seguro Integral de Salud - SIS, hasta por la suma de S/ 232 900 000,00 (DOSCIENTOS TREINTA Y DOS MILLONES NOVECIENTOS MIL CON 00/100 SOLES), con cargo a la fuente de financiamiento Recursos Ordinarios, a favor de las unidades ejecutoras detalladas en el Anexo N° 01, denominado “Pliego 135 - Seguro Integral de Salud - Unidad Ejecutora 001 - 1091 Seguro Integral de Salud - Transferencia Financiera - Recursos Ordinarios - Noviembre 2026”, que forma parte integrante de la presente resolución, bajo el mecanismo de pago por prestaciones de salud, en el marco de la Ley N° 32744 y de los convenios y adendas vigentes.…",
+   "montos": [
+    "S/ 260 480 951,00",
+    "S/ 232 900 000,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/EX/2572865-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2572865-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/EX/2572865-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261110.docx"
   },
   {
    "id": "2572722-1",
@@ -5310,17 +5376,18 @@
   "2026-11-06": 60,
   "2026-11-07": 71,
   "2026-11-08": 51,
-  "2026-11-09": 15
+  "2026-11-09": 15,
+  "2026-11-10": 38
  },
- "actualizado": "2026-11-09T08:09:30-05:00",
+ "actualizado": "2026-11-10T08:08:58-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-09",
-  "archivo": "resumenes/Normas_ElPeruano_20261109.docx",
-  "normas_de_interes": 4
+  "fecha": "2026-11-10",
+  "archivo": "resumenes/Normas_ElPeruano_20261110.docx",
+  "normas_de_interes": 3
  }
 }
