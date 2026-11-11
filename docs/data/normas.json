@@ -1,6 +1,48 @@
 {
  "normas": [
   {
+   "id": "2573320-1",
+   "fecha": "2026-11-11",
+   "entidad": "EDUCACIÓN",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° 683-2026-MINEDU",
+   "sumilla": "Modifican la cartera de inversiones del Programa Multianual de Inversiones (PMI) del Sector Educación 2026-2028",
+   "categorias": [
+    "Inversiones"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Modificación de la cartera de inversiones en el PMI del Sector Educación 1.1 Aprobar la incorporación de veintiún (21) inversiones no programadas en la Cartera de Inversiones del “Programa Multianual de Inversiones (PMI) del Sector Educación 2026-2028”, aprobado por Resolución Ministerial N° 100-2025-MINEDU y modificado por Resolución Ministerial N° 594-2026-MINEDU, conforme al Anexo 1 que forma parte integrante de la presente Resolución Ministerial. 1.2 Aprobar la modificación de diez (10) inversiones programadas en la Cartera de Inversiones del “Programa Multianual de Inversiones (PMI) del Sector Educación 2026-2028”, aprobado por Resolución Ministerial N° 100-2025-MINEDU y…",
+   "montos": [
+    "S/ 8 228 414 502,00",
+    "S/ 525 000 000,00",
+    "S/ 63 418 764,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2573320-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2573320-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2573320-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261111.docx"
+  },
+  {
+   "id": "2573354-1",
+   "fecha": "2026-11-11",
+   "entidad": "ECONOMÍA Y FINANZAS",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° 514-2026-EF/52",
+   "sumilla": "Resolución Ministerial que aprueba el Convenio de Pago que implementa lo dispuesto por el artículo 14 de la Ley N° 32515 Ley de Endeudamiento del Sector Público para el Año Fiscal 2026",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Aprobación del Convenio de Pago que implementa lo dispuesto por el artículo 14 de la Ley N° 32515 Se aprueba el “Convenio de Pago que implementa lo dispuesto por el artículo 14 de la Ley N° 32515, Ley de Endeudamiento del Sector Público para el Año Fiscal 2026”, a celebrarse entre el Ministerio de Economía y Finanzas, a través de la Dirección General del Tesoro Público, y el Banco de Materiales S.A.C. en Liquidación, para establecer los términos y condiciones del registro y pago del capital a que se refiere el artículo 6 de la Ley N° 29231, Ley de Saneamiento Financiero de los Prestatarios del Banco de Materiales. Artículo 2.- Suscripción de Documentos Se autoriza a la…",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2573354-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2573354-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2573354-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261111.docx"
+  },
+  {
    "id": "2573074-1",
    "fecha": "2026-11-10",
    "entidad": "INSTITUCIONES EDUCATIVAS",
@@ -5377,17 +5419,18 @@
   "2026-11-07": 71,
   "2026-11-08": 51,
   "2026-11-09": 15,
-  "2026-11-10": 38
+  "2026-11-10": 38,
+  "2026-11-11": 60
  },
- "actualizado": "2026-11-10T08:08:58-05:00",
+ "actualizado": "2026-11-11T08:08:59-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-10",
-  "archivo": "resumenes/Normas_ElPeruano_20261110.docx",
-  "normas_de_interes": 3
+  "fecha": "2026-11-11",
+  "archivo": "resumenes/Normas_ElPeruano_20261111.docx",
+  "normas_de_interes": 2
  }
 }
