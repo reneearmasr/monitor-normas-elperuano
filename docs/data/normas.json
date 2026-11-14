@@ -1,6 +1,91 @@
 {
  "normas": [
   {
+   "id": "2574864-1",
+   "fecha": "2026-11-14",
+   "entidad": "VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° 431-2026-VIVIENDA",
+   "sumilla": "Autorizan Transferencia Financiera a favor de la Empresa Prestadora de Servicios de Saneamiento Tacna Sociedad Anónima",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Transferencia Financiera Autorizar la Transferencia Financiera del Pliego 037: Ministerio de Vivienda, Construcción y Saneamiento, Unidad Ejecutora 004: Programa Nacional de Saneamiento Urbano, hasta por la suma de S/ 150 576,00 (CIENTO CINCUENTA MIL QUINIENTOS SETENTA Y SEIS Y 00/100 SOLES), a favor de la Empresa Prestadora de Servicios de Saneamiento Tacna Sociedad Anónima, para financiar el fortalecimiento de la capacidad operativa de la citada empresa, a fin de dar continuidad a las actividades de abastecimiento de agua potable mediante el uso de un camión cisterna de propiedad del Programa Nacional de Saneamiento Urbano, en beneficio de la población de la localidad de…",
+   "montos": [
+    "S/ 3 930 661 286,00",
+    "S/ 150 576,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2574864-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2574864-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2574864-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261114.docx"
+  },
+  {
+   "id": "2574611-1",
+   "fecha": "2026-11-14",
+   "entidad": "CONSEJO NACIONAL DE CIENCIA, TECNOLOGÍA E INNOVACIÓN TECNOLÓGICA",
+   "titulo": "RESOLUCIÓN  N° 152-2026-CONCYTEC-P",
+   "sumilla": "Aprueban transferencias financieras a entidades públicas y el otorgamiento de subvenciones a personas jurídicas privadas",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Aprobar las transferencias financieras a entidades públicas y el otorgamiento de subvenciones a personas jurídicas privadas, por la suma de 2’385,047.00 (Do s Millones Trescientos Ochenta y Cinco Mil Cuarenta y Siete y 00/100 Soles), en el marco de lo dispuesto por la Duodécima Disposición Complementaria Final de la Ley 31250, Ley del Sistema Nacional de Ciencia, Tecnología e Innovación, conforme al siguiente detalle: N° Tipo Proyecto o Programa Denominación Institución N° de Convenio o Contrato Monto de desembolso en soles S/ 1 Transferencias financieras a entidades públicas Proyecto Asistencia técnica especializada para la implementación de un sistema piloto de trazabilidad,…",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2574611-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2574611-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2574611-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261114.docx"
+  },
+  {
+   "id": "2574809-1",
+   "fecha": "2026-11-13",
+   "entidad": "TRANSPORTES Y COMUNICACIONES",
+   "titulo": "RESOLUCIÓN MINISTERIAL N° 657-2026-MTC/01",
+   "sumilla": "Aprueban incorporación de una inversión no programada en la Cartera de Inversiones del Programa Multianual de Inversiones del Sector Transportes y Comunicaciones para el período 2026-2028",
+   "categorias": [
+    "Inversiones"
+   ],
+   "extraordinaria": true,
+   "digital": false,
+   "dispone": "Artículo 1.- Incorporación de una inversión no programada Aprobar la incorporación de una inversión no programada en la Cartera de Inversiones del Programa Multianual de Inversiones del Sector Transportes y Comunicaciones para el período 2026-2028, aprobado mediante Resolución Ministerial Nº 099-2025-MTC/01, conforme al Anexo que forma parte integrante de la presente Resolución Ministerial. Artículo 2.- Comunicación Remitir copia de la presente Resolución Ministerial a la Oficina de Programación Multianual de Inversiones del Ministerio de Transportes y Comunicaciones para los fines pertinentes. Artículo 3.- Publicación Disponer la publicación de la presente Resolución Ministerial y su Anexo…",
+   "montos": [
+    "S/ 8 228 414 502,00",
+    "S/ 20 000 000,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/EX/2574809-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2574809-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/EX/2574809-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261114.docx"
+  },
+  {
+   "id": "2574564-1",
+   "fecha": "2026-11-13",
+   "entidad": "ENERGÍA Y MINAS",
+   "titulo": "RESOLUCIÓN MINISTERIAL N° 484-2026-MINEM/DM",
+   "sumilla": "Autorizan transferencia financiera a favor del Fondo para la Estabilización de Precios de los Combustibles Derivados del Petróleo - FEPC",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": true,
+   "digital": false,
+   "dispone": "Artículo 1.- Autorizar la transferencia financiera del Pliego 016: Ministerio de Energía y Minas - Unidad Ejecutora Nº 001 - Ministerio de Energía y Minas - Central, a favor del Fondo para la Estabilización de Precios de los Combustibles Derivados del Petróleo - FEPC, destinada a financiar el pago de las obligaciones que tiene el FEPC hasta por la suma de S/ 250 000 000,00 (Doscientos Cincuenta Millones y 00/100 Soles); Artículo 2.- La transferencia financiera se atenderá con cargo al presupuesto aprobado en el presente año fiscal del pliego Nº 016: Ministerio de Energía y Minas, Unidad Ejecutora Nº 001: Ministerio de Energía y Minas- Central, según el siguiente detalle: Fuente de…",
+   "montos": [
+    "S/ 8 228 414 502,00",
+    "S/ 250 000 000,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/EX/2574564-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2574564-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/EX/2574564-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261114.docx"
+  },
+  {
    "id": "2574516-1",
    "fecha": "2026-11-13",
    "entidad": "ECONOMÍA Y FINANZAS",
@@ -5590,17 +5675,18 @@
   "2026-11-10": 38,
   "2026-11-11": 60,
   "2026-11-12": 64,
-  "2026-11-13": 73
+  "2026-11-13": 73,
+  "2026-11-14": 103
  },
- "actualizado": "2026-11-13T08:13:38-05:00",
+ "actualizado": "2026-11-14T08:09:26-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-13",
-  "archivo": "resumenes/Normas_ElPeruano_20261113.docx",
+  "fecha": "2026-11-14",
+  "archivo": "resumenes/Normas_ElPeruano_20261114.docx",
   "normas_de_interes": 4
  }
 }
