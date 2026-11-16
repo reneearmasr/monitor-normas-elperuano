@@ -1,6 +1,27 @@
 {
  "normas": [
   {
+   "id": "2575012-1",
+   "fecha": "2026-11-16",
+   "entidad": "SEGURO INTEGRAL DE SALUD",
+   "titulo": "RESOLUCIÓN JEFATURAL  N° 000177-2026-SIS/J",
+   "sumilla": "Aprueban transferencia financiera a favor de unidades ejecutoras para el financiamiento de prestaciones de salud brindadas a los asegurados del SIS",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1 .- Aprobación de la Transferencia Financiera Aprobar la Transferencia Financiera de la Unidad Ejecutora 002 – 1423 Fondo Intangible Solidario de Salud – FISSAL, correspondiente al calendario noviembre 2026, hasta por la suma de S/ 27,580,951.00 (VEINTISIETE MILLONES QUINIENTOS OCHENTA MIL NOVECIENTOS CINCUENTA Y UNO CON 00/100 SOLES), con cargo a la Fuente de Financiamiento 1. Recursos Ordinarios, a favor de las unidades ejecutoras descritas en el Anexo N° 1 “Pliego 135 – Seguro Integral de Salud - Unidad Ejecutora 002 – 1423 Fondo Intangible Solidario de Salud Transferencia Financiera – Recursos Ordinarios - Calendario noviembre 2026 – Pago por Prestación - Financiamiento de…",
+   "montos": [
+    "S/ 27 580 951,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2575012-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2575012-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2575012-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261116.docx"
+  },
+  {
    "id": "2575007-1",
    "fecha": "2026-11-15",
    "entidad": "ECONOMÍA Y FINANZAS",
@@ -5783,17 +5804,18 @@
   "2026-11-12": 64,
   "2026-11-13": 73,
   "2026-11-14": 103,
-  "2026-11-15": 43
+  "2026-11-15": 43,
+  "2026-11-16": 17
  },
- "actualizado": "2026-11-15T08:08:44-05:00",
+ "actualizado": "2026-11-16T08:09:35-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-15",
-  "archivo": "resumenes/Normas_ElPeruano_20261115.docx",
-  "normas_de_interes": 5
+  "fecha": "2026-11-16",
+  "archivo": "resumenes/Normas_ElPeruano_20261116.docx",
+  "normas_de_interes": 1
  }
 }
