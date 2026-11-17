@@ -5805,17 +5805,18 @@
   "2026-11-13": 73,
   "2026-11-14": 103,
   "2026-11-15": 43,
-  "2026-11-16": 17
+  "2026-11-16": 17,
+  "2026-11-17": 39
  },
- "actualizado": "2026-11-16T08:09:35-05:00",
+ "actualizado": "2026-11-17T08:09:06-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-16",
-  "archivo": "resumenes/Normas_ElPeruano_20261116.docx",
-  "normas_de_interes": 1
+  "fecha": "2026-11-17",
+  "archivo": "resumenes/Normas_ElPeruano_20261117.docx",
+  "normas_de_interes": 0
  }
 }
