@@ -1,6 +1,54 @@
 {
  "normas": [
   {
+   "id": "2575657-1",
+   "fecha": "2026-11-18",
+   "entidad": "SALUD",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° 1021-2026/MINSA",
+   "sumilla": "Aprueban la incorporación de inversiones con CUI N° 2555944 N° 2714147 N° 2523689 N° 2513327 y N° 2667162 en el Programa Multianual de Inversiones del Sector Salud 2026-2028 aprobado por R.M. N° 131-2025/MINSA",
+   "categorias": [
+    "Inversiones"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Objeto El presente Decreto de Urgencia tiene por objeto autorizar el otorgamiento de una bonificación extraordinaria por única vez a favor de los pensionistas y beneficiarios del Sistema Nacional de Pensiones regulado por el Decreto Ley N° 19990. Artículo 2.- Bonificación extraordinaria 2.1. Se autoriza a la Oficina de Normalización Previsional (ONP) a otorgar, de manera excepcional y por única vez, una bonificación extraordinaria ascendente a S/ 200,00 (doscientos y 00/100 soles) a favor de los pensionistas y beneficiarios del Sistema Nacional de Pensiones regulado por el Decreto Ley N° 19990. 2.2. La bonificación extraordinaria se entrega al pensionista cuya pensión ha sido…",
+   "montos": [
+    "S/ 1 130.00",
+    "S/ 29 000 000,00",
+    "S/ 17 086 264,00",
+    "S/ 21 461 354,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2575657-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2575657-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2575657-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261118.docx"
+  },
+  {
+   "id": "2575820-1",
+   "fecha": "2026-11-18",
+   "entidad": "ECONOMÍA Y FINANZAS",
+   "titulo": "DECRETO SUPREMO  N° 258-2026-EF",
+   "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor de diversos gobiernos locales",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Objeto El presente Decreto de Urgencia tiene por objeto autorizar el otorgamiento de una bonificación extraordinaria por única vez a favor de los pensionistas y beneficiarios del Sistema Nacional de Pensiones regulado por el Decreto Ley N° 19990. Artículo 2.- Bonificación extraordinaria 2.1. Se autoriza a la Oficina de Normalización Previsional (ONP) a otorgar, de manera excepcional y por única vez, una bonificación extraordinaria ascendente a S/ 200,00 (doscientos y 00/100 soles) a favor de los pensionistas y beneficiarios del Sistema Nacional de Pensiones regulado por el Decreto Ley N° 19990. 2.2. La bonificación extraordinaria se entrega al pensionista cuya pensión ha sido…",
+   "montos": [
+    "S/ 1 130.00",
+    "S/ 29 000 000,00",
+    "S/ 17 086 264,00",
+    "S/ 21 461 354,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2575820-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2575820-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2575820-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261118.docx"
+  },
+  {
    "id": "2575012-1",
    "fecha": "2026-11-16",
    "entidad": "SEGURO INTEGRAL DE SALUD",
@@ -5806,17 +5854,18 @@
   "2026-11-14": 103,
   "2026-11-15": 43,
   "2026-11-16": 17,
-  "2026-11-17": 39
+  "2026-11-17": 39,
+  "2026-11-18": 45
  },
- "actualizado": "2026-11-17T08:09:06-05:00",
+ "actualizado": "2026-11-18T08:10:01-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-17",
-  "archivo": "resumenes/Normas_ElPeruano_20261117.docx",
-  "normas_de_interes": 0
+  "fecha": "2026-11-18",
+  "archivo": "resumenes/Normas_ElPeruano_20261118.docx",
+  "normas_de_interes": 2
  }
 }
