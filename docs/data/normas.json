@@ -1,6 +1,73 @@
 {
  "normas": [
   {
+   "id": "2576697-5",
+   "fecha": "2026-11-20",
+   "entidad": "TRABAJO Y PROMOCIÓN DEL EMPLEO",
+   "titulo": "DECRETO SUPREMO  N° 023-2026-TR",
+   "sumilla": "Decreto Supremo que autoriza la transferencia financiera del aporte total del Programa de Empleo Temporal LLAMKASUN PERÚ a favor de un organismo ejecutor del sector público con el cual se ha suscrito un Convenio para financiar la ejecución de un Proyecto de Inversión (PIR-08) en un distrito comprendido en el ámbito de la focalización geográfica del Programa de Empleo Temporal LLAMKASUN PERÚ - 2026-II (Tercer Grupo)",
+   "categorias": [
+    "Normatividad presupuestal",
+    "Inversiones"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Objeto Se autoriza la transferencia financiera del Programa de Empleo Temporal “Llamkasun Perú” a favor de un (1) organismo ejecutor del sector público con el cual se ha suscrito un (1) convenio con el objeto de financiar la ejecución de un (1) proyecto de inversión (PIR-08) en un (1) distrito del ámbito de la focalización geográfica aplicable al Programa - 2026-II (Tercer Grupo), por el importe total de S/ 827 250,00 (Ochocientos Veintisiete Mil Doscientos Cincuenta y 00/100 Soles), conforme al Anexo que forma parte integrante del presente Decreto Supremo. Artículo 2.- Financiamiento La transferencia financiera autorizada en el artículo 1 del presente Decreto Supremo se…",
+   "montos": [
+    "S/ 827 250,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2576697-5",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2576697-5",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2576697-5/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261120.docx"
+  },
+  {
+   "id": "2576697-3",
+   "fecha": "2026-11-20",
+   "entidad": "ECONOMÍA Y FINANZAS",
+   "titulo": "DECRETO SUPREMO  N° 261-2026-EF",
+   "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor de la Municipalidad Distrital de Velille",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Transferencia de Partidas a favor de la Municipalidad Distrital de Velille Se autoriza una Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026, hasta por la suma de S/ 6 100 000,00 (SEIS MILLONES CIEN MIL Y 00/100 SOLES), por la fuente de financiamiento Recursos Ordinarios, a favor de la Municipalidad Distrital de Velille, para financiar los gastos asociados a la reactivación de la economía a través de la ejecución de la inversión “MEJORAMIENTO Y AMPLIACIÓN DE LOS SERVICIOS DE SALUD DEL CENTRO DE SALUD DEL DISTRITO DE VELILLE - PROVINCIA DE CHUMBIVILCAS - DEPARTAMENTO DE CUSCO” con CUI N° 2369263, en materia de salud, en el marco de lo…",
+   "montos": [
+    "S/ 6 100 000,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2576697-3",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2576697-3",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2576697-3/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261120.docx"
+  },
+  {
+   "id": "2576697-4",
+   "fecha": "2026-11-20",
+   "entidad": "ECONOMÍA Y FINANZAS",
+   "titulo": "DECRETO SUPREMO  N° 262-2026-EF",
+   "sumilla": "Decreto Supremo que aprueba la operación de endeudamiento interno mediante la emisión de bonos soberanos en el marco de la Ley N° 32515 Ley de Endeudamiento del Sector Público para el Año Fiscal 2026",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Aprobación y condiciones de la operación de endeudamiento interno 1.1. Se aprueba la operación de endeudamiento interno hasta por S/ 5 700 000 000,00 (CINCO MIL SETECIENTOS MILLONES Y 00/100 SOLES), destinada a financiar el Segundo Tramo de un (1) proyecto de inversión, a ser ejecutado por el Ministerio de Defensa, a través de la Fuerza Aérea del Perú. 1.2. El financiamiento se efectuará a través de la emisión de bonos soberanos, los mismos que tendrán las características siguientes: - Monto : Hasta por S/ 5 700 000 000,00. - Unidad Responsable : Ministerio de Economía y Finanzas, a través de la Dirección General del Tesoro Público. - Estructurador : Ministerio de Economía y…",
+   "montos": [
+    "S/ 38 435 000 000,00",
+    "S/ 7 923 000 000,00",
+    "S/ 23 515 000 000,00",
+    "S/ 5 700 000 000,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2576697-4",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2576697-4",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2576697-4/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261120.docx"
+  },
+  {
    "id": "2575962-1",
    "fecha": "2026-11-19",
    "entidad": "PRODUCE",
@@ -20,6 +87,27 @@
    "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2575962-1",
    "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2575962-1/pdf",
    "resumen": "resumenes/Normas_ElPeruano_20261119.docx"
+  },
+  {
+   "id": "2576495-1",
+   "fecha": "2026-11-19",
+   "entidad": "INSTITUTO PERUANO DEL DEPORTE",
+   "titulo": "RESOLUCIÓN N° 000172-2026-P/IPD",
+   "sumilla": "Autorizan primera transferencia financiera del Pliego 342: Instituto Peruano del Deporte Unidad Ejecutora 001 a favor de la Organización Deportiva Panamericana A.C. (Panam Sports)",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": true,
+   "digital": false,
+   "dispone": "Artículo 1.- TRANSFERENCIA FINANCIERA POR CONCEPTO DE PASAJES AÉREOS Autorizar la primera transferencia financiera del Pliego 342: Instituto Peruano del Deporte, Unidad Ejecutora 001, a favor de la Organización Deportiva Panamericana A.C. (Panam Sports), por el monto equivalente en moneda nacional a USD 8 481 260,00 (OCHO MILLONES CUATROCIENTOS OCHENTA Y UN MIL DOSCIENTOS SESENTA Y 00/100 DÓLARES AMERICANOS), aplicando el tipo de cambio vigente a la fecha del registro del compromiso o devengado, con cargo a la fuente de financiamiento Recursos Ordinarios y a la Certificación de Crédito Presupuestario N° 00004299-2026, para atender la primera parte del pago por concepto de pasajes aéreos de…",
+   "montos": [
+    "S/ 41,800,495.71"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/EX/2576495-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2576495-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/EX/2576495-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261120.docx"
   },
   {
    "id": "2574871-1",
@@ -6011,17 +6099,18 @@
   "2026-11-16": 17,
   "2026-11-17": 39,
   "2026-11-18": 45,
-  "2026-11-19": 47
+  "2026-11-19": 47,
+  "2026-11-20": 78
  },
- "actualizado": "2026-11-19T08:09:20-05:00",
+ "actualizado": "2026-11-20T08:10:01-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-19",
-  "archivo": "resumenes/Normas_ElPeruano_20261119.docx",
-  "normas_de_interes": 7
+  "fecha": "2026-11-20",
+  "archivo": "resumenes/Normas_ElPeruano_20261120.docx",
+  "normas_de_interes": 4
  }
 }
