@@ -1,6 +1,90 @@
 {
  "normas": [
   {
+   "id": "2576791-1",
+   "fecha": "2026-11-21",
+   "entidad": "TRABAJO Y PROMOCIÓN DEL EMPLEO",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° 362-2026-TR",
+   "sumilla": "Autorizan la Primera Transferencia Financiera de la Unidad Ejecutora 002: Programa Nacional de Empleo Juvenil Jóvenes Productivos a favor de la Universidad Nacional de Piura",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Transferencia financiera Autorizar la Primera Transferencia Financiera de la Unidad Ejecutora 002: Programa Nacional de Empleo Juvenil “Jóvenes Productivos”, hasta por la suma de S/ 983 420,00 (NOVECIENTOS OCHENTA Y TRES MIL CUATROCIENTOS VEINTE Y 00/100 SOLES), que corresponde al 80% del monto total del financiamiento previsto en los Convenios de Colaboración Interinstitucional N° 008-2026-MTPE/PNEJP (S/ 749 656,00) y N° 009-2026-MTPE/PNEJP (S/ 233 764,00), en la Fuente de Financiamiento 4: Donaciones y Transferencias, a favor de la Universidad Nacional de Piura, con quien se han suscrito los citados Convenios de Colaboración Interinstitucional, conforme al Anexo que forma…",
+   "montos": [
+    "S/ 983 420,00",
+    "S/ 749 656,00",
+    "S/ 233 764,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2576791-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2576791-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2576791-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261121.docx"
+  },
+  {
+   "id": "2576797-1",
+   "fecha": "2026-11-21",
+   "entidad": "TRABAJO Y PROMOCIÓN DEL EMPLEO",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° 361-2026-TR",
+   "sumilla": "Autorizan Transferencia Financiera del Programa Nacional de Empleo Jóvenes Productivos a favor del Instituto Tecnológico de la Producción",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Transferencia financiera Autorizar la Transferencia Financiera de la Unidad Ejecutora 002: Programa Nacional de Empleo “Jóvenes Productivos”, hasta por la suma de S/ 291 190,00 (DOSCIENTOS NOVENTA Y UN MIL CIENTO NOVENTA Y 00/100 SOLES), que corresponde al 100% del monto total del financiamiento previsto en el Convenio de Colaboración Interinstitucional N° 0010-2026-MTPE/PNEJP; en la Fuente de Financiamiento 1: Recursos Ordinarios, a favor del Instituto Tecnológico de la Producción, conforme al monto, condiciones y demás disposiciones establecidas en el citado convenio y al Anexo que forma parte integrante de la presente Resolución Ministerial. Artículo 2.- Financiamiento La…",
+   "montos": [
+    "S/ 291 190,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2576797-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2576797-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2576797-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261121.docx"
+  },
+  {
+   "id": "2547858-1",
+   "fecha": "2026-11-21",
+   "entidad": "GOBIERNO REGIONAL DEL CUSCO",
+   "titulo": "DECRETO  N° 006-2026-GR CUSCO/GR",
+   "sumilla": "Reconocen el Comité de Vigilancia Ciudadana del Presupuesto Participativo Multianual 2027–2029 del Gobierno Regional de Cusco para el período 2027–2029",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo Primero.- RECONOCER el Comité de Vigilancia Ciudadana del Presupuesto Participativo Multianual 2027 – 2029 del Gobierno Regional de Cusco, para el período 2027 - 2029, integrado por los siguientes representantes: N° NOMBRE Y APELLIDOS DNI NOMBRE DE LA ORGANIZACIÓN 1 MARITZA TABOADA ZAPATA 23999143 RED DE MUJERES EMPRESARIAS Y EMPRENDEDORAS 2 LINO LOAIZA MORA 24463490 COMITÉ DE RIEGO RIO CCOCHOQ 3 LINO CCAHAYA CABEZA 24485604 COMUNIDAD DE ACCHU BAJA CALCA 4 ALEJANDRO CAMALA NINA 42507705 APU VILLA CHAPARRAL PAUCARTAMBO 5 LUCIANO TUPA SAUSAHUILLCA 80588426 COMISION DE REGANTES CHINCHAYPUGIO ANTA 6 GUILLERMO ERNESTO GUTIERREZ ROZAS 31044713 EX ALUMNOS CIENCIAS ZONA NOR ESTE 7…",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2547858-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2547858-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2547858-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261121.docx"
+  },
+  {
+   "id": "2577207-1",
+   "fecha": "2026-11-21",
+   "entidad": "ECONOMÍA Y FINANZAS",
+   "titulo": "DECRETO SUPREMO  N° 263-2026-EF",
+   "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor de la Municipalidad Distrital de Orurillo",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Objeto Se autoriza una Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026, hasta por la suma de S/ 2 000 000,00 (DOS MILLONES Y 00/100 SOLES), en la fuente de financiamiento Recursos Ordinarios, con cargo a los recursos del presupuesto institucional del Ministerio de Educación, a favor de la Municipalidad Distrital de Orurillo, para financiar la continuidad de la ejecución del proyecto de inversión en infraestructura educativa con CUI N° 2498315 “Mejoramiento del servicio educativo del nivel primaria de la I.E. N° 70497 en el distrito de Orurillo - provincia de Melgar - departamento de Puno”, en el marco de lo establecido en la Cuadragésima…",
+   "montos": [
+    "S/ 2 000 000,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2577207-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2577207-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2577207-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261121.docx"
+  },
+  {
    "id": "2576697-5",
    "fecha": "2026-11-20",
    "entidad": "TRABAJO Y PROMOCIÓN DEL EMPLEO",
@@ -21,6 +105,28 @@
    "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2576697-5",
    "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2576697-5/pdf",
    "resumen": "resumenes/Normas_ElPeruano_20261120.docx"
+  },
+  {
+   "id": "2577146-1",
+   "fecha": "2026-11-20",
+   "entidad": "ENERGÍA Y MINAS",
+   "titulo": "RESOLUCIÓN MINISTERIAL N° 493-2026-MINEM/DM",
+   "sumilla": "Autorizan transferencia financiera de recursos a favor de la Empresa Regional de Servicio Público de Electricidad del Oriente S.A. – ELECTRO ORIENTE S.A. para financiar Proyecto",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": true,
+   "digital": false,
+   "dispone": "Artículo 1.- Autorizar la transferencia financiera de recursos provenientes de la fuente de financiamiento Recursos Determinados, con cargo al Presupuesto de la Unidad Ejecutora N° 005: Dirección General de Electrificación Rural del Pliego 016: Ministerio de Energía y Minas, por la suma de S/ 46 561 218,60 (Cuarenta y seis millones quinientos sesenta y un mil doscientos dieciocho y 60/100 soles), incluidos impuestos, a favor de la Empresa Regional de Servicio Público de Electricidad del Oriente S.A. - ELECTRO ORIENTE S.A., para financiar el Proyecto que se detalla a continuación: PROYECTO: CREACIÓN DEL SERVICIO DE TRANSMISIÓN Y SUB TRANSMISIÓN EN LA LÍNEA DE TRANSMISIÓN 60 KV NUEVA JAÉN -…",
+   "montos": [
+    "S/ 100 000 000,00",
+    "S/ 46 561 218,60"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/EX/2577146-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2577146-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/EX/2577146-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261121.docx"
   },
   {
    "id": "2576697-3",
@@ -6100,17 +6206,18 @@
   "2026-11-17": 39,
   "2026-11-18": 45,
   "2026-11-19": 47,
-  "2026-11-20": 78
+  "2026-11-20": 78,
+  "2026-11-21": 104
  },
- "actualizado": "2026-11-20T08:10:01-05:00",
+ "actualizado": "2026-11-21T08:09:34-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-20",
-  "archivo": "resumenes/Normas_ElPeruano_20261120.docx",
-  "normas_de_interes": 4
+  "fecha": "2026-11-21",
+  "archivo": "resumenes/Normas_ElPeruano_20261121.docx",
+  "normas_de_interes": 5
  }
 }
