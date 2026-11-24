@@ -1,6 +1,67 @@
 {
  "normas": [
   {
+   "id": "2577415-1",
+   "fecha": "2026-11-24",
+   "entidad": "MUNICIPALIDAD DE ATE",
+   "titulo": "Ordenanzas  N° 652-MDA",
+   "sumilla": "Ordenanza que regula el proceso del Presupuesto Participativo Basado en Resultados en el distrito de Ate",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": true,
+   "dispone": "Artículo Primero.- APROBAR la ORDENANZA QUE REGULA EL PROCESO DEL PRESUPUESTO PARTICIPATIVO BASADO EN RESULTADOS EN EL DISTRITO DE ATE , cuyo texto, como anexo, forma parte integrante de la presente Ordenanza, la misma que tiene por objeto establecer el marco normativo municipal para la organización, desarrollo, participación, evaluación, priorización, seguimiento, vigilancia y rendición de cuentas del Proceso del Presupuesto Participativo en el Distrito de Ate, en concordancia con la normativa nacional vigente y las competencias de la Municipalidad Distrital de Ate; de acuerdo a los considerandos antes expuestos. Artículo Segundo.- ENCARGAR a la Oficina General de Planificación…",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://epdoc2.elperuano.pe/EpPo/VistaDE.asp?Referencias=MjU3NzQxNS0xMjAyNjExMjQ=",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2577415-1",
+   "url_pdf": "",
+   "resumen": "resumenes/Normas_ElPeruano_20261124.docx"
+  },
+  {
+   "id": "2577749-1",
+   "fecha": "2026-11-24",
+   "entidad": "ECONOMÍA Y FINANZAS",
+   "titulo": "DECRETO SUPREMO  N° 264-2026-EF",
+   "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor del Ministerio de la Producción",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Objeto Se autoriza una Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026, hasta por la suma de S/ 7 500 000,00 (SIETE MILLONES QUINIENTOS MIL Y 00/100 SOLES), por la fuente de financiamiento Recursos por Operaciones Oficiales de Crédito, a favor del Ministerio de la Producción para financiar la ejecución del “Programa de Innovación, Modernización Tecnológica y Emprendimiento”, vinculado a la operación de endeudamiento externo aprobada por el Decreto Supremo N° 190-2021-EF, con cargo a los recursos del presupuesto institucional de la Presidencia del Consejo de Ministros, en el marco de lo establecido en el numeral 3.1 del artículo 3 de la Ley…",
+   "montos": [
+    "S/ 7 500 000,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2577749-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2577749-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2577749-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261124.docx"
+  },
+  {
+   "id": "2577749-2",
+   "fecha": "2026-11-24",
+   "entidad": "ECONOMÍA Y FINANZAS",
+   "titulo": "DECRETO SUPREMO  N° 265-2026-EF",
+   "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor del Gobierno Regional de Cajamarca",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Objeto Se autoriza una Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026, hasta por la suma de S/ 2 968 516,00 (DOS MILLONES NOVECIENTOS SESENTA Y OCHO MIL QUINIENTOS DIECISÉIS Y 00/100 SOLES), por la fuente de financiamiento Recursos Ordinarios, a favor del Gobierno Regional de Cajamarca, para financiar la operación y el mantenimiento del Hospital Santa María de Cutervo durante el periodo de noviembre a diciembre de 2026, con cargo a los recursos del presupuesto institucional del Ministerio de Salud, en el marco de lo establecido en el artículo 44 de la Ley N° 32513, Ley de Presupuesto del Sector Público para el Año Fiscal 2026, de acuerdo…",
+   "montos": [
+    "S/ 2 968 516,00"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2577749-2",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2577749-2",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2577749-2/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261124.docx"
+  },
+  {
    "id": "2577226-1",
    "fecha": "2026-11-23",
    "entidad": "ECONOMÍA Y FINANZAS",
@@ -6285,17 +6346,18 @@
   "2026-11-20": 78,
   "2026-11-21": 104,
   "2026-11-22": 33,
-  "2026-11-23": 20
+  "2026-11-23": 20,
+  "2026-11-24": 59
  },
- "actualizado": "2026-11-23T08:10:40-05:00",
+ "actualizado": "2026-11-24T08:10:22-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-23",
-  "archivo": "resumenes/Normas_ElPeruano_20261123.docx",
-  "normas_de_interes": 4
+  "fecha": "2026-11-24",
+  "archivo": "resumenes/Normas_ElPeruano_20261124.docx",
+  "normas_de_interes": 3
  }
 }
