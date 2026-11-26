@@ -1,6 +1,44 @@
 {
  "normas": [
   {
+   "id": "2578450-1",
+   "fecha": "2026-11-26",
+   "entidad": "AUTORIDAD DE TRANSPORTE URBANO PARA LIMA Y CALLAO",
+   "titulo": "RESOLUCIÓN  N° 282 -2026-ATU/PE",
+   "sumilla": "Sustituyen Anexos del Reglamento que regula el Régimen Excepcional de otorgamiento o renovación de autorizaciones para la Prestación del Servicio Público de Transporte Regular en el territorio de competencia de la ATU Reglamento que regula la prestación del Servicio Público de Transporte Especial en la modalidad de Taxi en Lima y Callao y del Reglamento que regula la prestación del Servicio Público de Transporte Especial en las modalidades de turístico de trabajadores y de estudiantes en Lima y Callao",
+   "categorias": [
+    "ATU y transporte urbano"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Sustitución del Anexo del Reglamento que regula el Régimen Excepcional de otorgamiento o renovación de autorizaciones para la Prestación del Servicio Público de Transporte Regular en el territorio de competencia de la ATU Sustituir el Anexo “Tabla de Infracciones, Sanciones y Medidas Preventivas por inobservancia al Reglamento que regula el Régimen Excepcional de otorgamiento o renovación de autorizaciones para la Prestación del Servicio Público de Transporte Regular en el territorio de competencia de la ATU” del citado Reglamento, aprobado mediante Resolución de Presidencia Ejecutiva N° 203-2023-ATU/PE y sus modificatorias, por el Anexo N° I que forma parte integrante de la…",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2578450-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2578450-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2578450-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261126.docx"
+  },
+  {
+   "id": "2578475-1",
+   "fecha": "2026-11-26",
+   "entidad": "AUTORIDAD DE TRANSPORTE URBANO PARA LIMA Y CALLAO",
+   "titulo": "RESOLUCIÓN  N° 283-2026-ATU/PE",
+   "sumilla": "Modifican la Resolución de Presidencia Ejecutiva N° 409-2025-ATU/PE modificada por la Resolución de Presidencia Ejecutiva N° 179-2026-ATU/PE sobre delegación de funciones",
+   "categorias": [
+    "ATU y transporte urbano"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Modificar el numeral 2.3 del artículo 2 de la Resolución de Presidencia Ejecutiva N° 409-2025-A TU/PE, modificada por la Resolución de Presidencia Ejecutiva N° 179-2026-ATU/PE, a f in de incorporar los literales k), l) y m) en los siguientes términos: Artículo 2.- Delegar en el/la Jefe/a de la Oficina de Administración de la Autoridad de Transporte Urbano para Lima y Callao - ATU, durante el periodo que comprende el Año Fiscal 2026, las siguientes funciones: (…) 2.3 En materia de acciones administrativas: a) Aprobar las donaciones de bienes muebles, conforme lo dispuesto en la normativa vigente emitida por la Dirección General de Abastecimiento - DGA del Ministerio de Economía…",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2578475-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2578475-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2578475-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261126.docx"
+  },
+  {
    "id": "2577640-1",
    "fecha": "2026-11-25",
    "entidad": "ORGANISMO SUPERVISOR DE INVERSIÓN PRIVADA EN TELECOMUNICACIONES",
@@ -6458,17 +6496,18 @@
   "2026-11-22": 33,
   "2026-11-23": 20,
   "2026-11-24": 59,
-  "2026-11-25": 81
+  "2026-11-25": 81,
+  "2026-11-26": 72
  },
- "actualizado": "2026-11-25T08:09:59-05:00",
+ "actualizado": "2026-11-26T08:09:41-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-25",
-  "archivo": "resumenes/Normas_ElPeruano_20261125.docx",
-  "normas_de_interes": 5
+  "fecha": "2026-11-26",
+  "archivo": "resumenes/Normas_ElPeruano_20261126.docx",
+  "normas_de_interes": 2
  }
 }
