@@ -1,6 +1,47 @@
 {
  "normas": [
   {
+   "id": "2578961-1",
+   "fecha": "2026-11-27",
+   "entidad": "ENERGÍA Y MINAS",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° 501-2026-MINEM/DM",
+   "sumilla": "Autorizan transferencia financiera de recursos a favor de la Empresa Regional de Servicio Público de Electricidad del Oriente S.A. – ELECTRO ORIENTE S.A. para financiar Proyecto",
+   "categorias": [
+    "Normatividad presupuestal"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Autorizar la transferencia financiera de recursos provenientes de la fuente de financiamiento Recursos Determinados, con cargo al Presupuesto de la Unidad Ejecutora N° 005: Dirección General de Electrificación Rural del Pliego 016: Ministerio de Energía y Minas, por la suma de S/ 1 155 356,58 (Un millón ciento cincuenta y cinco mil trescientos cincuenta y seis con 58/100 soles), incluidos impuestos, a favor de la Empresa Regional de Servicio Público de Electricidad del Oriente S.A. – ELECTRO ORIENTE S.A., para financiar el Proyecto que se detalla a continuación: PROYECTO: MEJORAMIENTO DE REDES PRIMARIAS Y SECUNDARIAS DE MACHUNGO DEL DISTRITO DE ALBERTO LEVEAU – PROVINCIA DE SAN…",
+   "montos": [
+    "S/ 100 000 000,00",
+    "S/ 1 155 356,58"
+   ],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2578961-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2578961-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2578961-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261127.docx"
+  },
+  {
+   "id": "2578806-1",
+   "fecha": "2026-11-27",
+   "entidad": "EDUCACIÓN",
+   "titulo": "RESOLUCIÓN MINISTERIAL  N° 715-2026-MINEDU",
+   "sumilla": "Aprueban los Criterios de Priorización de Inversiones del Sector Educación para su aplicación en la fase de Programación Multianual de Inversiones por los tres niveles de gobierno",
+   "categorias": [
+    "Inversiones"
+   ],
+   "extraordinaria": false,
+   "digital": false,
+   "dispone": "Artículo 1.- Aprobar los “Criterios de Priorización de Inversiones del Sector Educación”, para su aplicación en la fase de Programación Multianual de Inversiones por los tres niveles de gobierno que, como Anexo, forman parte de la presente Resolución. Artículo 2.- Derogar la Resolución Ministerial Nº 516-2025-MINEDU, que aprueba el documento denominado “Criterios de Priorización de Inversiones del Sector Educación”. Artículo 3.- Notificar la presente Resolución a la Oficina de Programación Multianual de Inversiones del Sector Educación para los fines pertinentes. Artículo 4.- Disponer la publicación de la presente Resolución y su Anexo en el Sistema de Información Jurídica de Educación…",
+   "montos": [],
+   "menciones_atu": [],
+   "url": "https://busquedas.elperuano.pe/dispositivo/NL/2578806-1",
+   "url_texto": "https://busquedas.elperuano.pe/api/visor_html/2578806-1",
+   "url_pdf": "https://busquedas.elperuano.pe/dispositivo/NL/2578806-1/pdf",
+   "resumen": "resumenes/Normas_ElPeruano_20261127.docx"
+  },
+  {
    "id": "2578450-1",
    "fecha": "2026-11-26",
    "entidad": "AUTORIDAD DE TRANSPORTE URBANO PARA LIMA Y CALLAO",
@@ -6497,17 +6538,18 @@
   "2026-11-23": 20,
   "2026-11-24": 59,
   "2026-11-25": 81,
-  "2026-11-26": 72
+  "2026-11-26": 72,
+  "2026-11-27": 60
  },
- "actualizado": "2026-11-26T08:09:41-05:00",
+ "actualizado": "2026-11-27T08:09:58-05:00",
  "categorias": [
   "ATU y transporte urbano",
   "Normatividad presupuestal",
   "Inversiones"
  ],
  "ultimo_resumen": {
-  "fecha": "2026-11-26",
-  "archivo": "resumenes/Normas_ElPeruano_20261126.docx",
+  "fecha": "2026-11-27",
+  "archivo": "resumenes/Normas_ElPeruano_20261127.docx",
   "normas_de_interes": 2
  }
 }
